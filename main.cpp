@@ -5,23 +5,20 @@ using namespace mLab;
 int main(int argc, char* argv[]) {
     setlocale(LC_ALL, 0);
     char *out_stream = nullptr;
-    if(argc < 2 || argc > 3) {
-        std::cout << "Incorrect command line! \nUsage: lab.exe [input.txt] [output.txt]" << std::endl;
-        exit(1);
-    }
+    if(argc < 2 || argc > 3) return print_err(8);
     if(argc == 2) {
         out_stream = new char[11]{'o', 'u', 't', 'p', 'u', 't', '.', 't', 'x', 't', '\0'};
     } else if(argc == 3) {
         out_stream = argv[2];
     }
     std::ifstream ifstr(argv[1]);
-    if(ifstr.bad() || ifstr.fail()) {
+    std::ofstream ofstr(out_stream);
+    if(ifstr.bad() || ifstr.fail() || ofstr.bad() || ofstr.fail()) {
         return print_err(7);
     }
-    std::ofstream ofstr(out_stream);
     std::cout << "Program started"<< std::endl;
     _mContainer container;
-    container.read_from_file(&ifstr);
+    print_err(container.read_from_file(&ifstr));
     container.write_to_file(&ofstr);
     return 0;
 }
