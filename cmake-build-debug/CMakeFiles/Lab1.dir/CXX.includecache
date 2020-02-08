@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-C:/Abc/docsx/3 course/tech_program/Lab1/main.cpp
-text.h
-C:/Abc/docsx/3 course/tech_program/Lab1/text.h
-
 C:/Abc/docsx/3 course/tech_program/Lab1/text.cpp
 text.h
 C:/Abc/docsx/3 course/tech_program/Lab1/text.h
@@ -22,5 +18,7 @@ iostream
 fstream
 -
 locale
+-
+Windows.h
 -
 

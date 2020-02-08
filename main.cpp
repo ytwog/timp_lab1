@@ -1,9 +1,10 @@
 //19081999 - 7,3,1,1
 #include "text.h"
 using namespace mLab;
+
 int main(int argc, char* argv[]) {
     setlocale(LC_ALL, 0);
-    char *out_stream;
+    char *out_stream = nullptr;
     if(argc < 2 || argc > 3) {
         std::cout << "Incorrect command line! \nUsage: lab.exe [input.txt] [output.txt]" << std::endl;
         exit(1);
@@ -14,10 +15,13 @@ int main(int argc, char* argv[]) {
         out_stream = argv[2];
     }
     std::ifstream ifstr(argv[1]);
+    if(ifstr.bad() || ifstr.fail()) {
+        return print_err(7);
+    }
     std::ofstream ofstr(out_stream);
     std::cout << "Program started"<< std::endl;
-    char *s = new char[255];
     _mContainer container;
     container.read_from_file(&ifstr);
+    container.write_to_file(&ofstr);
     return 0;
 }

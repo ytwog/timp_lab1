@@ -8,14 +8,19 @@
 #include <iostream>
 #include <fstream>
 #include <locale>
+#include <Windows.h>
 
 namespace mLab {
 
+    // Перечисление типов текста
     enum txt_type {
         REPLACEMENT = 1,
         CYCLE = 2
     };
 
+    // Вывод ошибки по коду error_code
+    int print_err(int error_code);
+    // Класс текста с заменами
     class txt_replacement{
     public:
         ~txt_replacement();
@@ -23,20 +28,22 @@ namespace mLab {
         int read(std::ifstream*);
     private:
         std::pair<char, char> *mapping;
-        std::string cipher_txt;
-        std::string open_txt;
+        std::string *cipher_txt;
+        std::string *open_txt;
     };
 
+    // Класс текста со сдвигом
     class txt_cycle{
     public:
         void cipher();
         int read(std::ifstream*);
     private:
         int shift;
-        std::string cipher_txt;
-        std::string open_txt;
+        std::string *cipher_txt;
+        std::string *open_txt;
     };
 
+    // Класс для объединения текстов
     class text {
     public:
         ~text();
@@ -62,12 +69,17 @@ namespace mLab {
         text *next;
     };
 
+    // Контейнер - однонаправленный цикличный список
     class _mContainer {
     public:
         _mContainer() {
             end = start = NULL;
         }
 
+        void write_to_file(std::ofstream *_ofstr) {
+            std::string out_str = "test";
+            _ofstr->write(out_str.c_str(), out_str.length());
+        }
 
         /// Returns error_code:
         /// 0 - no error has occurred
@@ -75,7 +87,7 @@ namespace mLab {
         /// 2 - waited ">replace", got other str
         /// 3 - waited ">wait", got other str
         /// 4 - different string-"replace" and string-"with" size
-        /// 5 - reserved
+        /// 5 - waited ">type", got other str
         /// 6 - type should by either 1 or 2
         int read_from_file(std::ifstream *_ifstr) {
             char *s = new char[255];
@@ -93,15 +105,19 @@ namespace mLab {
                 if(s[0] == '/' && s[1] == '/') continue;
                 if(str == "!ADD") {
                     operation = 0;
+                    continue;
                 }
                 if(operation == 0) {
                     if (str.substr(0, 6) == ">type ") {
-                        if (str[7] == '1') type = txt_type::REPLACEMENT;
-                        else if (str[7] == '2') type = txt_type::CYCLE;
+                        if (str[6] == '1') type = txt_type::REPLACEMENT;
+                        else if (str[6] == '2') type = txt_type::CYCLE;
                         else {
                             error_code = 6;
                             break;
                         }
+                    } else {
+                        error_code = 5;
+                        break;
                     }
                     text *txt = new text(type);
                     if(type == txt_type::REPLACEMENT)
