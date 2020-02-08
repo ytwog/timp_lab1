@@ -2,6 +2,7 @@
 // Created by y2g on 04.02.2020.
 //
 
+// Русский текст
 #include "text.h"
 
 namespace mLab {

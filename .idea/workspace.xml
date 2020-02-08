@@ -11,7 +11,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c23f13a-2616-44d7-818a-19e09a688ac4" name="Default Changelist" comment="" />
+    <list default="true" id="2c23f13a-2616-44d7-818a-19e09a688ac4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/text.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/text.cpp" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +24,11 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1XKwNPbpszXJ69Hg6YX42f1JkcU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="File.Encoding" />
@@ -57,11 +63,22 @@
       <option name="presentableId" value="Default" />
       <updated>1580808053135</updated>
       <workItem from="1580808057606" duration="4046000" />
-      <workItem from="1580880658320" duration="9911000" />
+      <workItem from="1580880658320" duration="10210000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
