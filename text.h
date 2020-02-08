@@ -11,12 +11,37 @@
 
 namespace mLab {
 
+    enum txt_type {
+        REPLACEMENT = 1,
+        CYCLE = 2
+    };
+
+    class txt_replacement{
+    public:
+        ~txt_replacement();
+        void cipher();
+        int read(std::ifstream*);
+    private:
+        std::pair<char, char> *mapping;
+        std::string cipher_txt;
+        std::string open_txt;
+    };
+
+    class txt_cycle{
+    public:
+        void cipher();
+        int read(std::ifstream*);
+    private:
+        int shift;
+        std::string cipher_txt;
+        std::string open_txt;
+    };
 
     class text {
     public:
-        virtual void cipher() = 0;
-        virtual int read(std::ifstream*);
-        text() {
+        ~text();
+        text(int _type) {
+            type = (txt_type)_type;
             next = NULL;
         }
 
@@ -28,28 +53,13 @@ namespace mLab {
             return next;
         }
 
+        union {
+            txt_replacement r;
+            txt_cycle c;
+        };
     protected:
+        txt_type type;
         text *next;
-        std::string open_txt;
-    };
-
-
-    class txt_replacement : text {
-    public:
-        void cipher();
-        int read(std::ifstream*);
-    private:
-        std::pair<char, char> *mapping;
-        std::string cipher_txt;
-    };
-
-    class txt_cycle : text {
-    public:
-        void cipher();
-        int read(std::ifstream*);
-    private:
-        int shift;
-        std::string cipher_txt;
     };
 
     class _mContainer {
@@ -86,15 +96,18 @@ namespace mLab {
                 }
                 if(operation == 0) {
                     if (str.substr(0, 6) == ">type ") {
-                        if (str[7] == '1') type = 1;
-                        else if (str[7] == '2') type = 2;
+                        if (str[7] == '1') type = txt_type::REPLACEMENT;
+                        else if (str[7] == '2') type = txt_type::CYCLE;
                         else {
                             error_code = 6;
                             break;
                         }
                     }
-                    text *txt = (text*)new txt_replacement;
-                    error_code = txt->read(_ifstr);
+                    text *txt = new text(type);
+                    if(type == txt_type::REPLACEMENT)
+                        error_code = txt->r.read(_ifstr);
+                    if(type == txt_type::CYCLE)
+                        error_code = txt->c.read(_ifstr);
                     if(!error_code) append(txt);
                     else delete txt;
                 }
@@ -114,6 +127,7 @@ namespace mLab {
         bool remove(text *_node) {
             text *prev = start;
             for(text *i = start; i != end; i = i->get_next()) {
+                if(i == NULL) return false;
                 if(i == _node) {
                     prev->set_next(i->get_next());
                     delete i;

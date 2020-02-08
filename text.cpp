@@ -2,13 +2,20 @@
 // Created by y2g on 04.02.2020.
 //
 
-// Русский текст
 #include "text.h"
 
 namespace mLab {
 
     void txt_replacement::cipher() {
 
+    }
+
+    text::~text() {
+
+    }
+
+    txt_replacement::~txt_replacement() {
+        if(mapping) delete[] mapping;
     }
 
     int txt_replacement::read(std::ifstream *_ifstr) {
