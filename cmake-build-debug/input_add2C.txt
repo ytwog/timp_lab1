@@ -7,41 +7,12 @@
 //         заменить изначальные (с новой строки;
 //	   i-ый элемент строки replace заменяется i-ым элементом строки with)
 !ADD
->type 1
->text
-BLABALBBLBA
->replace
-ABCDEFGHIJKLMNOPQRSTUXWYZ
->with
-DGFJASKFNJCOWPJIWBUWBCJCB
-!ADD
->type 2
->text
-TEXT SAFASF TEXT AWEPO D
->shift 18
-!ADD
->type 1
->text
-GADfAKFASFKALFFASK FA SKF L
->replace
-ABCDEFGHIJKLMNOPQRSTUXWYZ
->with
-DGFJASKFNJCOWPJIWBUWBCJCB
-!ADD
->type 1
->text
-SOME RANDOM text 
->replace
-ABCDEFGHIJKLMNOPQRSTUtext
->with
-DGFJASKFNJCOWPJIWBUWBqwez
-!ADD
 >type 2
 >text
 OPEN TEXT FOR ENTRY 1 WITH CYCLE SHIFT
->shift 2
+>shift 3
 !ADD
 >type 2
 >text
-OPEN text FOR ENTRY 2 ABLABBALAB
+OPEN TEXT FOR ENTRY 2 ABLABBALAB
 >shift 11

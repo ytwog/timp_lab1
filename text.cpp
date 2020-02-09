@@ -6,7 +6,20 @@
 
 namespace mLab {
 
-    // Вывод ошибки по коду error_code
+    /// Функции
+
+    int from_str_to_int(std::string _s) {
+        int res = 0;
+        if(_s.length() > 9) return -2; // Big string
+        for(int i = 0; i < _s.length(); i++) {
+            if(_s[i] >= '0' && _s[i] <= '9')
+                res += (_s[i] - '0') * pow(10, _s.length() - 1 - i);
+            else
+                return -1; // Wrong symbol
+        }
+        return res;
+    }
+
     int print_err(int error_code) {
         std::string out_str = "Error has occured: ";
         switch(error_code) {
@@ -39,6 +52,15 @@ namespace mLab {
             case 9:
                 out_str += "9 - waited !<command>, got other str";
                 break;
+            case 10:
+                out_str += "10 - waited \">shift\", got other str";
+                break;
+            case 11:
+                out_str += "11 - got wrong symbol in shift-integer";
+                break;
+            case 12:
+                out_str += "12 - shift-integer is very large";
+                break;
             default:
                 out_str += "unexpected error.\n";
         }
@@ -47,6 +69,13 @@ namespace mLab {
         return error_code;
     }
 
+    /// Методы text
+
+    text::~text() {
+
+    }
+
+    /// Методы txt_replacement
     void txt_replacement::cipher() {
         std::string *res = new std::string;
         *res = *get_open_txt();
@@ -64,14 +93,6 @@ namespace mLab {
             }
         }
         cipher_txt = res;
-    }
-
-    text::~text() {
-
-    }
-
-    int txt_cycle::read(std::ifstream *) {
-        return 0;
     }
 
     txt_replacement::~txt_replacement() {
@@ -144,6 +165,130 @@ namespace mLab {
         return error_code;
     }
 
+    void txt_replacement::Init() {
+        alphabet_length = 0;
+        mapping = nullptr;
+        cipher_txt = nullptr;
+        open_txt = nullptr;
+    }
+
+    std::string txt_replacement::info_string() {
+        std::string res = "Cipher type: symbol replacement\n";
+        res += "Open_text:\n";
+        res += *get_open_txt();
+        res += "\nReplace:\n";
+        std::string temp = "";
+        for(int i = 0; i < alphabet_length; i++) {
+            res += mapping[i].first;
+            temp += mapping[i].second;
+        }
+        res += "\nWith:\n";
+        res += temp;
+        res += "\nCipher text:\n";
+        res += *get_cipher_txt();
+        res += "\n";
+        return res;
+    }
+
+    std::pair<char, char> *txt_replacement::get_mapping() {return mapping;}
+
+    std::string *txt_replacement::get_cipher_txt() {
+        if(cipher_txt == nullptr) cipher();
+        return cipher_txt;
+    }
+
+    std::string *txt_replacement::get_open_txt() {
+        return open_txt;
+    }
+
+    /// Методы txt_cycle
+
+    int txt_cycle::read(std::ifstream *_ifstr) {
+        char *s = new char[255];
+        int error_code = 0;
+        std::string str;
+        std::string _open_text;
+        int step = 0;
+        int _shift = 0;
+        while(!_ifstr->eof() && error_code == 0 && step < 3) {
+            _ifstr->getline(s, 255);
+            str = s;
+            if (s[0] == '/' && s[1] == '/') continue;
+            switch (step) {
+                case 0:
+                    if (str == ">text") step++;
+                    else error_code = 1;
+                    break;
+                case 1:
+                    _open_text = str;
+                    step++;
+                    break;
+                case 2:
+                    if (str.substr(0, 7) != ">shift ") error_code = 10;
+                    _shift = from_str_to_int(str.substr(7));
+                    if(_shift == -1) return 11;
+                    if(_shift == -2) return 12;
+                    open_txt = new std::string;
+                    open_txt->append(_open_text);
+                    shift = _shift;
+                    step++;
+                    break;
+                default:
+                    break;
+            }
+        }
+        if(s) delete[] s;
+        return error_code;
+    }
+
+    void txt_cycle::Init() {
+        shift = 0;
+        cipher_txt = nullptr;
+        open_txt = nullptr;
+    }
+
+    std::string *txt_cycle::get_open_txt() {
+        return open_txt;
+    }
+
+    std::string *txt_cycle::get_cipher_txt() {
+        if(cipher_txt == nullptr) cipher();
+        return cipher_txt;
+    }
+
+    void txt_cycle::cipher() {
+        std::string *res = new std::string;
+        *res = *get_open_txt();
+        int _shift = shift % 26;
+        for(int i = 0; i < res->length(); i++) {
+            bool upper_case = ((*res)[i] >= 'A' && (*res)[i] <= 'Z');
+            if(((*res)[i] >= 'a' && (*res)[i] <= 'z') || ((*res)[i] >= 'A' && (*res)[i] <= 'Z')) {
+                (*res)[i] += shift;
+                if((((*res)[i] < 'a' || (*res)[i] > 'z') && !upper_case)
+                    || (((*res)[i] < 'A' || (*res)[i] > 'Z') && upper_case))
+                    (*res)[i] -= 26;
+            }
+        }
+        cipher_txt = res;
+    }
+
+    std::string txt_cycle::info_string() {
+        std::string res = "Cipher type: symbol cycle\n";
+        res += "Open_text:\n";
+        res += *get_open_txt();
+        res += "\nShift: ";
+        int _shift = shift;
+        char *temp_shift = new char[16];
+        _itoa_s(_shift, temp_shift, 10, 10);
+        res += temp_shift;
+        res += "\nCipher text:\n";
+        res += *get_cipher_txt();
+        res += "\n";
+        return res;
+    }
+
+    /// Методы контейнера _mContainer
+
     /// Returns error_code:
     /// 0 - no error has occurred
     /// 1 - waited ">text", got other str
@@ -209,7 +354,7 @@ namespace mLab {
                 if(i->get_type() == txt_type::REPLACEMENT) {
                     out_str += i->r.info_string();
                 } else {
-                    out_str += "Cipher type: cycle shift\n";
+                    out_str += i->c.info_string();
                 }
                 out_str += "----------------\n";
                 if(i == end) break;
@@ -254,39 +399,4 @@ namespace mLab {
         }
     }
 
-    void txt_replacement::Init() {
-        alphabet_length = 0;
-        mapping = nullptr;
-        cipher_txt = nullptr;
-        open_txt = nullptr;
-    }
-
-    std::string txt_replacement::info_string() {
-        std::string res = "Cipher type: symbol replacement\n";
-        res += "Open_text:\n";
-        res += *get_open_txt();
-        res += "\nReplace:\n";
-        std::string temp = "";
-        for(int i = 0; i < alphabet_length; i++) {
-            res += mapping[i].first;
-            temp += mapping[i].second;
-        }
-        res += "\nWith:\n";
-        res += temp;
-        res += "\nCipher text:\n";
-        res += *get_cipher_txt();
-        res += "\n";
-        return res;
-    }
-
-    std::pair<char, char> *txt_replacement::get_mapping() {return mapping;}
-
-    std::string *txt_replacement::get_cipher_txt() {
-        if(cipher_txt == nullptr) cipher();
-        return cipher_txt;
-    }
-
-    std::string *txt_replacement::get_open_txt() {
-        return open_txt;
-    }
 }

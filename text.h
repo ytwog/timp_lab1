@@ -48,11 +48,17 @@ namespace mLab {
     // Класс текста со сдвигом
     class txt_cycle{
     public:
-        void Init() {
+        void Init();
 
-        }
+        std::string *get_cipher_txt();
+
+        std::string *get_open_txt();
+
         void cipher();
+
         int read(std::ifstream*);
+
+        std::string info_string();
     private:
         int shift;
         std::string *cipher_txt;
