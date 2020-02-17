@@ -18,14 +18,32 @@ namespace mLab {
         CYCLE = 2
     };
 
+    // Класс для объединения текстов
+    class text {
+    public:
+        ~text();
+        text(){}
+        txt_type get_type() {return type;}
+        void set_type(int _type);
+        void set_next(text *_next);
+
+        text *get_next();
+
+    protected:
+        txt_type type;
+        text *next;
+    };
+
     // Вывод ошибки по коду error_code
     int print_err(int error_code);
     // Класс текста с заменами
-    class txt_replacement{
+    class txt_replacement : public text{
     public:
         void Init();
 
         ~txt_replacement();
+
+        txt_replacement();
 
         std::string info_string();
 
@@ -46,9 +64,11 @@ namespace mLab {
     };
 
     // Класс текста со сдвигом
-    class txt_cycle{
+    class txt_cycle : public text{
     public:
         void Init();
+
+        txt_cycle();
 
         std::string *get_cipher_txt();
 
@@ -65,36 +85,7 @@ namespace mLab {
         std::string *open_txt;
     };
 
-    // Класс для объединения текстов
-    class text {
-    public:
-        ~text();
 
-        txt_type get_type() {return type;}
-
-        text(txt_type _type) {
-            type = _type;
-            if(txt_type::REPLACEMENT == type) r.Init();
-            else c.Init();
-            next = NULL;
-        }
-
-        void set_next(text *_next) {
-            next = _next;
-        }
-
-        text *get_next() {
-            return next;
-        }
-
-        union {
-            txt_replacement r;
-            txt_cycle c;
-        };
-    protected:
-        txt_type type;
-        text *next;
-    };
 
     // Контейнер - однонаправленный цикличный список
     class _mContainer {

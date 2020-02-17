@@ -75,6 +75,21 @@ namespace mLab {
 
     }
 
+    txt_replacement::txt_replacement() {
+        Init();
+        next = NULL;
+    }
+
+    void text::set_next(text *_next) {
+        next = _next;
+    }
+
+    text *text::get_next() {
+        return next;
+    }
+
+    void text::set_type(int _type) {type = (txt_type)_type;}
+
     /// Методы txt_replacement
     void txt_replacement::cipher() {
         std::string *res = new std::string;
@@ -287,6 +302,11 @@ namespace mLab {
         return res;
     }
 
+    txt_cycle::txt_cycle() {
+        Init();
+        next = NULL;
+    }
+
     /// Методы контейнера _mContainer
 
     /// Returns error_code:
@@ -304,9 +324,7 @@ namespace mLab {
         int operation = -1; // ADD = 0
         int type = 0;
         std::string open_text;
-        int map_length = 0;
         int error_code = 0;
-        std::pair<char, char> *mapping = nullptr;
         while (!_ifstr->eof() && error_code == 0) {
             _ifstr->getline(s, 255);
             str = s;
@@ -327,12 +345,18 @@ namespace mLab {
                     error_code = 5;
                     break;
                 }
-                text *txt = new text((txt_type) type);
-                if (type == txt_type::REPLACEMENT)
-                    error_code = txt->r.read(_ifstr);
-                if (type == txt_type::CYCLE)
-                    error_code = txt->c.read(_ifstr);
-                if (!error_code) append(txt);
+                text *txt = nullptr;
+                if (type == txt_type::REPLACEMENT) {
+                    txt = new txt_replacement();
+                    txt->set_type(type);
+                    error_code = ((txt_replacement *) txt)->read(_ifstr);
+                }
+                if (type == txt_type::CYCLE) {
+                    txt = new txt_cycle();
+                    txt->set_type(type);
+                    error_code = ((txt_cycle *) txt)->read(_ifstr);
+                }
+                if (!error_code && txt) append(txt);
                 else delete txt;
                 operation = -1;
             } else {
@@ -352,9 +376,9 @@ namespace mLab {
         if(start) {
             for (text *i = start; ; i = i->get_next()) {
                 if(i->get_type() == txt_type::REPLACEMENT) {
-                    out_str += i->r.info_string();
+                    out_str += ((txt_replacement*)i)->info_string();
                 } else {
-                    out_str += i->c.info_string();
+                    out_str += ((txt_cycle*)i)->info_string();
                 }
                 out_str += "----------------\n";
                 if(i == end) break;

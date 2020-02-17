@@ -1,3 +1,0 @@
-C:/Abc/docsx/3 course/tech_program/Lab1/cmake-build-debug/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_9ca8a.dir
-C:/Abc/docsx/3 course/tech_program/Lab1/cmake-build-debug/CMakeFiles/CMakeTmp/CMakeFiles/edit_cache.dir
-C:/Abc/docsx/3 course/tech_program/Lab1/cmake-build-debug/CMakeFiles/CMakeTmp/CMakeFiles/rebuild_cache.dir
