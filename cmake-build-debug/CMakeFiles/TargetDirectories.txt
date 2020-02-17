@@ -1,3 +1,0 @@
-C:/Abc/docsx/3 course/tech_program/Lab1/cmake-build-debug/CMakeFiles/Lab1.dir
-C:/Abc/docsx/3 course/tech_program/Lab1/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Abc/docsx/3 course/tech_program/Lab1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
