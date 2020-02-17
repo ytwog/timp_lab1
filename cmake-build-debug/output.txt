@@ -1,1 +1,10 @@
-Empty container
+Cipher type: symbol replacement
+Open_text:
+OPEN TEXT FOR ENTRY 1 WITH SYMBOL REPLACEMENT
+Replace:
+ABCDEFGHIJKLMNOPQRSTUXWYZ
+With:
+DGFJASKFNJCOWPJIWBUWBCJCB
+Cipher text:
+JIAP WACW SJB APWBC 1 JNWF UCWGJO BAIODFAWAPW
+----------------
