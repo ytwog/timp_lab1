@@ -11,34 +11,42 @@
 #include <Windows.h>
 
 namespace mLab {
+    /// Струтуры
+    struct txt_replacement;
+    struct txt_cycle;
+    struct text;
+    struct _mContainer;
 
-    // Перечисление типов текста
+    /// Функции
+    // Вывод ошибки по коду error_code
+    int print_err(int error_code);
+    // Класс текста с заменами
+
+    // Шифрует открытый текст в шифротекст
+    void cipher(text*);
+
+    // Возвращает строку, содержащую информацию про текст и шифр
+    std::string info_string(text*);
+
+    // Считывает с потока строки и преобразовывает их в поля класса
+    int read(std::ifstream*, text*);
+
+    void Init(text*);
+    void Init(_mContainer*);
+
+    void write_to_file(std::ofstream *_ofstr, _mContainer *);
+    int read_from_file(std::ifstream *_ifstr, _mContainer *);
+    text *text_at(int pos, _mContainer *);
+    bool remove(text *_node, _mContainer*);
+    void append(text *_node, _mContainer*);
+    /// Перечисление типов текста
     enum txt_type {
         REPLACEMENT = 1,
         CYCLE = 2
     };
 
-    // Вывод ошибки по коду error_code
-    int print_err(int error_code);
-    // Класс текста с заменами
-    class txt_replacement{
-    public:
-        void Init();
 
-        ~txt_replacement();
-
-        std::string info_string();
-
-        std::pair<char,char> *get_mapping();
-
-        std::string *get_cipher_txt();
-
-        std::string *get_open_txt();
-
-        void cipher();
-
-        int read(std::ifstream*);
-    private:
+    struct txt_replacement {
         int alphabet_length;
         std::pair<char, char> *mapping;
         std::string *cipher_txt;
@@ -46,72 +54,24 @@ namespace mLab {
     };
 
     // Класс текста со сдвигом
-    class txt_cycle{
-    public:
-        void Init();
-
-        std::string *get_cipher_txt();
-
-        std::string *get_open_txt();
-
-        void cipher();
-
-        int read(std::ifstream*);
-
-        std::string info_string();
-    private:
+    struct txt_cycle{
         int shift;
         std::string *cipher_txt;
         std::string *open_txt;
     };
 
     // Класс для объединения текстов
-    class text {
-    public:
-        ~text();
-
-        txt_type get_type() {return type;}
-
-        text(txt_type _type) {
-            type = _type;
-            if(txt_type::REPLACEMENT == type) r.Init();
-            else c.Init();
-            next = NULL;
-        }
-
-        void set_next(text *_next) {
-            next = _next;
-        }
-
-        text *get_next() {
-            return next;
-        }
-
+    struct text {
         union {
             txt_replacement r;
             txt_cycle c;
         };
-    protected:
         txt_type type;
         text *next;
     };
 
     // Контейнер - однонаправленный цикличный список
-    class _mContainer {
-    public:
-        _mContainer();
-
-        void write_to_file(std::ofstream *_ofstr);
-
-        int read_from_file(std::ifstream *_ifstr);
-
-        text *text_at(int pos);
-
-        bool remove(text *_node);
-
-        void append(text *_node);
-
-    private:
+    struct _mContainer {
         text *start;
         text *end;
     };
