@@ -22,6 +22,10 @@ namespace mLab {
     class text {
     public:
         ~text();
+        virtual void Init()=0;
+        virtual void cipher()=0;
+        virtual int read(std::ifstream*)=0;
+        virtual std::string info_string()=0;
         text(){}
         txt_type get_type() {return type;}
         void set_type(int _type);
