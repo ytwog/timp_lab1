@@ -71,24 +71,66 @@ namespace mLab {
 
     /// Методы text
 
-    text::~text() {
-
-    }
-
     txt_replacement::txt_replacement() {
-        Init();
-        next = NULL;
+        alphabet_length = 0;
+        mapping = nullptr;
+        cipher_txt = nullptr;
+        open_txt = nullptr;
     }
 
-    void text::set_next(text *_next) {
+    void node::set_next(node *_next) {
         next = _next;
     }
 
-    text *text::get_next() {
+    node *node::get_next() {
         return next;
     }
 
     void text::set_type(int _type) {type = (txt_type)_type;}
+
+    int text::read_from_file(std::ifstream *_ifstr, _mContainer*cont) {
+        char *s = new char[255];
+        std::string str;
+        int operation = -1; // ADD = 0
+        int type = 0;
+        std::string open_text;
+        int error_code = 0;
+        while (!_ifstr->eof() && error_code == 0) {
+            _ifstr->getline(s, 255);
+            str = s;
+            if (s[0] == '/' && s[1] == '/') continue;
+            if (str == "!ADD") {
+                operation = 0;
+                continue;
+            }
+            if (operation == 0) {
+                if (str.substr(0, 6) == ">type ") {
+                    if (str[6] == '1') type = txt_type::REPLACEMENT;
+                    else if (str[6] == '2') type = txt_type::CYCLE;
+                    else {
+                        error_code = 6;
+                        break;
+                    }
+                } else {
+                    error_code = 5;
+                    break;
+                }
+                text *txt = nullptr;
+                if (type == txt_type::REPLACEMENT) txt = new txt_replacement();
+                if (type == txt_type::CYCLE) txt = new txt_cycle();
+                txt->set_type(type);
+                error_code = txt->read(_ifstr);
+
+                if (!error_code && txt) cont->append(txt);
+                else delete txt;
+                operation = -1;
+            } else {
+                error_code = 9;
+            }
+        }
+        delete[] s;
+        return error_code;
+    }
 
     /// Методы txt_replacement
     void txt_replacement::cipher() {
@@ -110,9 +152,6 @@ namespace mLab {
         cipher_txt = res;
     }
 
-    txt_replacement::~txt_replacement() {
-        if(mapping) delete[] mapping;
-    }
 
     int txt_replacement::read(std::ifstream *_ifstr) {
         char *s = new char[255];
@@ -178,13 +217,6 @@ namespace mLab {
         if(s) delete[] s;
         if(error_code && mapping) delete[] mapping;
         return error_code;
-    }
-
-    void txt_replacement::Init() {
-        alphabet_length = 0;
-        mapping = nullptr;
-        cipher_txt = nullptr;
-        open_txt = nullptr;
     }
 
     std::string txt_replacement::info_string() {
@@ -256,12 +288,6 @@ namespace mLab {
         return error_code;
     }
 
-    void txt_cycle::Init() {
-        shift = 0;
-        cipher_txt = nullptr;
-        open_txt = nullptr;
-    }
-
     std::string *txt_cycle::get_open_txt() {
         return open_txt;
     }
@@ -303,8 +329,9 @@ namespace mLab {
     }
 
     txt_cycle::txt_cycle() {
-        Init();
-        next = NULL;
+        shift = 0;
+        cipher_txt = nullptr;
+        open_txt = nullptr;
     }
 
     /// Методы контейнера _mContainer
@@ -318,70 +345,18 @@ namespace mLab {
     /// 5 - waited ">type", got other str
     /// 6 - type should by either 1 or 2
     /// 9 - waited !<command>, got other str
-    int _mContainer::read_from_file(std::ifstream *_ifstr) {
-        char *s = new char[255];
-        std::string str;
-        int operation = -1; // ADD = 0
-        int type = 0;
-        std::string open_text;
-        int error_code = 0;
-        while (!_ifstr->eof() && error_code == 0) {
-            _ifstr->getline(s, 255);
-            str = s;
-            if (s[0] == '/' && s[1] == '/') continue;
-            if (str == "!ADD") {
-                operation = 0;
-                continue;
-            }
-            if (operation == 0) {
-                if (str.substr(0, 6) == ">type ") {
-                    if (str[6] == '1') type = txt_type::REPLACEMENT;
-                    else if (str[6] == '2') type = txt_type::CYCLE;
-                    else {
-                        error_code = 6;
-                        break;
-                    }
-                } else {
-                    error_code = 5;
-                    break;
-                }
-                text *txt = nullptr;
-                if (type == txt_type::REPLACEMENT) {
-                    txt = new txt_replacement();
-                    txt->set_type(type);
-                    error_code = ((txt_replacement *) txt)->read(_ifstr);
-                }
-                if (type == txt_type::CYCLE) {
-                    txt = new txt_cycle();
-                    txt->set_type(type);
-                    error_code = ((txt_cycle *) txt)->read(_ifstr);
-                }
-                if (!error_code && txt) append(txt);
-                else delete txt;
-                operation = -1;
-            } else {
-                error_code = 9;
-            }
-        }
-        delete[] s;
-        return error_code;
-    }
 
     _mContainer::_mContainer() {
-        end = start = NULL;
+        _end = _start = NULL;
     }
 
-    void _mContainer::write_to_file(std::ofstream *_ofstr) {
+    void text::write_to_file(std::ofstream *_ofstr, _mContainer*cont) {
         std::string out_str = "";
-        if(start) {
-            for (text *i = start; ; i = i->get_next()) {
-                if(i->get_type() == txt_type::REPLACEMENT) {
-                    out_str += ((txt_replacement*)i)->info_string();
-                } else {
-                    out_str += ((txt_cycle*)i)->info_string();
-                }
+        if(cont->start()) {
+            for (text *i = (text*)cont->start(); ; i = (text*)i->get_next()) {
+                out_str += i->info_string();
                 out_str += "----------------\n";
-                if(i == end) break;
+                if(i == cont->end()) break;
             }
         } else {
             out_str += "Empty container\n";
@@ -389,17 +364,17 @@ namespace mLab {
         _ofstr->write(out_str.c_str(), out_str.length());
     }
 
-    text *_mContainer::text_at(int pos) {
-        text *res = start;
+    node *_mContainer::text_at(int pos) {
+        node *res = _start;
         for(int i = 0; i < pos; i++) {
             res = res->get_next();
         }
         return res;
     }
 
-    bool _mContainer::remove(text *_node) {
-        text *prev = start;
-        for(text *i = start; i != end; i = i->get_next()) {
+    bool _mContainer::remove(node *_node) {
+        node *prev = _start;
+        for(node *i = _start; i != _end; i = i->get_next()) {
             if(i == NULL) return false;
             if(i == _node) {
                 prev->set_next(i->get_next());
@@ -411,16 +386,20 @@ namespace mLab {
         return false;
     }
 
-    void _mContainer::append(text *_node) {
-        if(start) {
-            end->set_next(_node);
-            _node->set_next(start);
-            end = _node;
+    void _mContainer::append(node *_node) {
+        if(_start) {
+            _end->set_next(_node);
+            _node->set_next(_start);
+            _end = _node;
 
         } else {
             _node->set_next(_node);
-            start = end = _node;
+            _start = _end = _node;
         }
     }
+
+    node *_mContainer::end() {return _end;}
+
+    node *_mContainer::start() {return _start;}
 
 }

@@ -49,3 +49,10 @@ Shift: 11
 Cipher text:
 ZAPY epie QZC PYECJ 2 LMWLMMLWLM
 ----------------
+Cipher type: symbol cycle
+Open_text:
+OPEN YOUR EYES
+Shift: 26
+Cipher text:
+OPEN YOUR EYES
+----------------

@@ -18,7 +18,7 @@ int main(int argc, char* argv[]) {
     }
     std::cout << "Program started"<< std::endl;
     _mContainer container;
-    print_err(container.read_from_file(&ifstr));
-    container.write_to_file(&ofstr);
+    print_err(text::read_from_file(&ifstr, &container));
+    text::write_to_file(&ofstr, &container);
     return 0;
 }
