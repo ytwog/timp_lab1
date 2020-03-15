@@ -8,6 +8,16 @@ namespace mLab {
 
     /// Функции
 
+    std::string int_to_str(int ask) {
+        std::string res = "";
+        if(ask == 0) return "0";
+        while(ask) {
+            res = char(ask % 10 + 48) + res;
+            ask /= 10;
+        }
+        return res;
+    }
+
     int from_str_to_int(std::string _s) {
         int res = 0;
         if(_s.length() > 9) return -2; // Big string
@@ -233,6 +243,8 @@ namespace mLab {
         res += temp;
         res += "\nCipher text:\n";
         res += *get_cipher_txt();
+        res += "\nOpenText length:\n";
+        res += int_to_str(counter_function());
         res += "\n";
         return res;
     }
@@ -246,6 +258,10 @@ namespace mLab {
 
     std::string *txt_replacement::get_open_txt() {
         return open_txt;
+    }
+
+    int txt_replacement::counter_function() {
+        return open_txt->length();
     }
 
     /// Методы txt_cycle
@@ -324,6 +340,8 @@ namespace mLab {
         res += temp_shift;
         res += "\nCipher text:\n";
         res += *get_cipher_txt();
+        res += "\nOpenText length:\n";
+        res += int_to_str(counter_function());
         res += "\n";
         return res;
     }
@@ -332,6 +350,10 @@ namespace mLab {
         shift = 0;
         cipher_txt = nullptr;
         open_txt = nullptr;
+    }
+
+    int txt_cycle::counter_function() {
+        return open_txt->length();
     }
 
     /// Методы контейнера _mContainer
