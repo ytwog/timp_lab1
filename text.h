@@ -15,7 +15,8 @@ namespace mLab {
     // Перечисление типов текста
     enum txt_type {
         REPLACEMENT = 1,
-        CYCLE = 2
+        CYCLE = 2,
+        DIGIT_REPL = 3
     };
 
 
@@ -94,5 +95,19 @@ namespace mLab {
         std::string *open_txt;
     };
 
+    class txt_digit_repl : public text{
+    public:
+        void cipher() override;
+        int read(std::ifstream*) override;
+        std::string info_string() override;
+        txt_digit_repl();
+        int *get_cipher_txt();
+        std::string *get_open_txt();
+    private:
+        int alphabet_length;
+        std::pair<char, int> *mapping;
+        int *cipher_txt;
+        std::string *open_txt;
+    };
 }
 #endif //LAB1_TEXT_H

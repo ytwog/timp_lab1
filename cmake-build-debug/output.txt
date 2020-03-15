@@ -1,3 +1,13 @@
+Cipher type: digit replacement
+Open_text:
+TExt For Test1nG
+Replace:
+A,B,D,E,G,T,e,t,n,1,g
+With:
+13,2,43,101,32,44,35,66,1,0,11
+Cipher text:
+44 101 120 66 32 70 111 114 32 44 35 115 66 0 1 32 
+----------------
 Cipher type: symbol replacement
 Open_text:
 BLABALBBLBA
@@ -48,11 +58,4 @@ OPEN text FOR ENTRY 2 ABLABBALAB
 Shift: 11
 Cipher text:
 ZAPY epie QZC PYECJ 2 LMWLMMLWLM
-----------------
-Cipher type: symbol cycle
-Open_text:
-OPEN YOUR EYES
-Shift: 26
-Cipher text:
-OPEN YOUR EYES
 ----------------
