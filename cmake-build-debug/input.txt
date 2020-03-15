@@ -6,6 +6,7 @@
 // >with - определение символов, которыми нужно 
 //         заменить изначальные (с новой строки;
 //	   i-ый элемент строки replace заменяется i-ым элементом строки with)
+// >owner info - информация о владельце текста (с новой строки)
 !ADD
 >type 1
 >text
@@ -14,11 +15,15 @@ BLABALBBLBA
 ABCDEFGHIJKLMNOPQRSTUXWYZ
 >with
 DGFJASKFNJCOWPJIWBUWBCJCB
+>owner info
+some owner
 !ADD
 >type 2
 >text
 TEXT SAFASF TEXT AWEPO D
 >shift 18
+>owner info
+some owner
 !ADD
 >type 1
 >text
@@ -27,6 +32,8 @@ GADfAKFASFKALFFASK FA SKF L
 ABCDEFGHIJKLMNOPQRSTUXWYZ
 >with
 DGFJASKFNJCOWPJIWBUWBCJCB
+>owner info
+some owner
 !ADD
 >type 1
 >text
@@ -35,18 +42,19 @@ SOME RANDOM text
 ABCDEFGHIJKLMNOPQRSTUtext
 >with
 DGFJASKFNJCOWPJIWBUWBqwez
+>owner info
+some owner
 !ADD
 >type 2
 >text
 OPEN TEXT FOR ENTRY 1 WITH CYCLE SHIFT
 >shift 2
+>owner info
+some owner
 !ADD
 >type 2
 >text
 OPEN text FOR ENTRY 2 ABLABBALAB
 >shift 11
-!ADD
->type 2
->text
-OPEN YOUR EYES
->shift 26
+>owner info
+some owner

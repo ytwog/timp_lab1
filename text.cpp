@@ -161,7 +161,7 @@ namespace mLab {
         int step = 0;
         char *m_first = nullptr;
         std::pair <char, char> *mapping = nullptr;
-        while(!_ifstr->eof() && error_code == 0 && step < 6) {
+        while(!_ifstr->eof() && error_code == 0 && step < 8) {
             _ifstr->getline(s, 255);
             str = s;
             if (s[0] == '/' && s[1] == '/') continue;
@@ -207,6 +207,15 @@ namespace mLab {
                     this->mapping = mapping;
                     step++;
                     break;
+                case 6:
+                    if (str == ">owner info") step++;
+                    else error_code = 13;
+                    break;
+                case 7:
+                    owner_info = new std::string;
+                    owner_info->append(str);
+                    step++;
+                    break;
                 default:
                     break;
             }
@@ -233,6 +242,8 @@ namespace mLab {
         res += temp;
         res += "\nCipher text:\n";
         res += *get_cipher_txt();
+        res += "\nOwner info:\n";
+        res += *(owner_info);
         res += "\n";
         return res;
     }
@@ -257,7 +268,7 @@ namespace mLab {
         std::string _open_text;
         int step = 0;
         int _shift = 0;
-        while(!_ifstr->eof() && error_code == 0 && step < 3) {
+        while(!_ifstr->eof() && error_code == 0 && step < 5) {
             _ifstr->getline(s, 255);
             str = s;
             if (s[0] == '/' && s[1] == '/') continue;
@@ -278,6 +289,15 @@ namespace mLab {
                     open_txt = new std::string;
                     open_txt->append(_open_text);
                     shift = _shift;
+                    step++;
+                    break;
+                case 3:
+                    if (str == ">owner info") step++;
+                    else error_code = 13;
+                    break;
+                case 4:
+                    owner_info = new std::string;
+                    owner_info->append(str);
                     step++;
                     break;
                 default:
@@ -324,6 +344,8 @@ namespace mLab {
         res += temp_shift;
         res += "\nCipher text:\n";
         res += *get_cipher_txt();
+        res += "\nOwner info:\n";
+        res += *(owner_info);
         res += "\n";
         return res;
     }
