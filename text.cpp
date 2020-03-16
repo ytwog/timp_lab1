@@ -18,6 +18,12 @@ namespace mLab {
         return res;
     }
 
+    bool comparat(text *_f, text *_s) {
+        int l1 = _f->counter_function();
+        int l2 = _s->counter_function();
+        return l1 > l2;
+    }
+
     int from_str_to_int(std::string _s) {
         int res = 0;
         if(_s.length() > 9) return -2; // Big string
@@ -77,6 +83,43 @@ namespace mLab {
         std::cout << out_str << std::endl;
         system("pause");
         return error_code;
+    }
+
+    void sort(_mContainer *cont) {
+        int _size = 0;
+        if((text*)cont->start() == nullptr) return;
+        text *prev_i = nullptr;
+        for(text* i = (text*)cont->start(); i != (text*)cont->end(); i = (text*)i->get_next()) {
+            text *prev_j = nullptr;
+            for(text* j = (text*)i->get_next(); j != (text*)cont->start(); j = (text*)j->get_next()) {
+                if(comparat(i, j)) {
+                    // Обновляем start
+                    if(cont->start() == i) {
+                        cont->set_start(j);
+                    } else if(cont->start() == j) {
+                        cont->set_start(i);
+                    }
+                    // Обновляем end
+                    if(cont->end() == i) {
+                        cont->set_end(j);
+                    } else if(cont->end() == j) {
+                        cont->set_end(i);
+                    }
+                    if(prev_i)
+                        prev_i->set_next(j);
+                    if(prev_j)
+                        prev_j->set_next(i);
+                    node*z1 = i->get_next();
+                    i->set_next(j->get_next());
+                    j->set_next(z1);
+                    auto z2 = i;
+                    i = j;
+                    j = z2;
+                }
+                prev_j = j;
+            }
+            prev_i = i;
+        }
     }
 
     /// Методы text
@@ -374,6 +417,7 @@ namespace mLab {
 
     void text::write_to_file(std::ofstream *_ofstr, _mContainer*cont) {
         std::string out_str = "";
+        sort(cont);
         if(cont->start()) {
             for (text *i = (text*)cont->start(); ; i = (text*)i->get_next()) {
                 out_str += i->info_string();
@@ -423,5 +467,13 @@ namespace mLab {
     node *_mContainer::end() {return _end;}
 
     node *_mContainer::start() {return _start;}
+
+    void _mContainer::set_start(node *n) {
+        _start = n;
+    }
+
+    void _mContainer::set_end(node *n) {
+        _end = n;
+    }
 
 }

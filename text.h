@@ -35,6 +35,8 @@ namespace mLab {
         node *text_at(int pos);
         bool remove(node *_node);
         void append(node *_node);
+        void set_end(node* n);
+        void set_start(node* n);
         node *end();
         node *start();
     private:

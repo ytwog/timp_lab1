@@ -12,24 +12,12 @@ OpenText length:
 ----------------
 Cipher type: symbol cycle
 Open_text:
-TEXT SAFASF TEXT AWEPO D
-Shift: 18
+OPEN YOUR EYES
+Shift: 26
 Cipher text:
-LWPL KSXSKX LWPL SOWHG V
+OPEN YOUR EYES
 OpenText length:
-24
-----------------
-Cipher type: symbol replacement
-Open_text:
-GADfAKFASFKALFFASK FA SKF L
-Replace:
-ABCDEFGHIJKLMNOPQRSTUXWYZ
-With:
-DGFJASKFNJCOWPJIWBUWBCJCB
-Cipher text:
-KDJfDCSDUSCDOSSDUC SD UCS O
-OpenText length:
-27
+14
 ----------------
 Cipher type: symbol replacement
 Open_text:
@@ -45,28 +33,10 @@ OpenText length:
 ----------------
 Cipher type: symbol cycle
 Open_text:
-OPEN TEXT FOR ENTRY 1 WITH CYCLE SHIFT
-Shift: 2
+TEXT SAFASF TEXT AWEPO D
+Shift: 18
 Cipher text:
-QRGP VGZV HQT GPVTA 1 YKVJ EAENG UJKHV
+LWPL KSXSKX LWPL SOWHG V
 OpenText length:
-38
-----------------
-Cipher type: symbol cycle
-Open_text:
-OPEN text FOR ENTRY 2 ABLABBALAB
-Shift: 11
-Cipher text:
-ZAPY epie QZC PYECJ 2 LMWLMMLWLM
-OpenText length:
-32
-----------------
-Cipher type: symbol cycle
-Open_text:
-OPEN YOUR EYES
-Shift: 26
-Cipher text:
-OPEN YOUR EYES
-OpenText length:
-14
+24
 ----------------
