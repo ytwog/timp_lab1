@@ -18,6 +18,12 @@ namespace mLab {
         return res;
     }
 
+    bool comparat(text *_f, text *_s) {
+        int l1 = _f->counter_function();
+        int l2 = _s->counter_function();
+        return l1 > l2;
+    }
+
     int from_str_to_int(std::string _s) {
         int res = 0;
         if (_s.length() > 9) return -2; // Big string
@@ -77,6 +83,43 @@ namespace mLab {
         std::cout << out_str << std::endl;
         system("pause");
         return error_code;
+    }
+
+    void sort(_mContainer *cont) {
+        int _size = 0;
+        if((text*)cont->start() == nullptr) return;
+        text *prev_i = nullptr;
+        for(text* i = (text*)cont->start(); i != (text*)cont->end(); i = (text*)i->get_next()) {
+            text *prev_j = nullptr;
+            for(text* j = (text*)i->get_next(); j != (text*)cont->start(); j = (text*)j->get_next()) {
+                if(comparat(i, j)) {
+                    // Обновляем start
+                    if(cont->start() == i) {
+                        cont->set_start(j);
+                    } else if(cont->start() == j) {
+                        cont->set_start(i);
+                    }
+                    // Обновляем end
+                    if(cont->end() == i) {
+                        cont->set_end(j);
+                    } else if(cont->end() == j) {
+                        cont->set_end(i);
+                    }
+                    if(prev_i)
+                        prev_i->set_next(j);
+                    if(prev_j)
+                        prev_j->set_next(i);
+                    node*z1 = i->get_next();
+                    i->set_next(j->get_next());
+                    j->set_next(z1);
+                    auto z2 = i;
+                    i = j;
+                    j = z2;
+                }
+                prev_j = j;
+            }
+            prev_i = i;
+        }
     }
 
     /// Методы text
@@ -266,6 +309,8 @@ namespace mLab {
         res += *get_cipher_txt();
         res += "\nOwner info:\n";
         res += *(owner_info);
+        res += "\nOpenText length:\n";
+        res += int_to_str(counter_function());
         res += "\n";
         return res;
     }
@@ -279,6 +324,10 @@ namespace mLab {
 
     std::string *txt_replacement::get_open_txt() {
         return open_txt;
+    }
+
+    int txt_replacement::counter_function() {
+        return open_txt->length();
     }
 
     /// Методы txt_cycle
@@ -368,6 +417,8 @@ namespace mLab {
         res += *get_cipher_txt();
         res += "\nOwner info:\n";
         res += *(owner_info);
+        res += "\nOpenText length:\n";
+        res += int_to_str(counter_function());
         res += "\n";
         return res;
     }
@@ -376,6 +427,10 @@ namespace mLab {
         shift = 0;
         cipher_txt = nullptr;
         open_txt = nullptr;
+    }
+
+    int txt_cycle::counter_function() {
+        return open_txt->length();
     }
 
     /// Методы контейнера _mContainer
@@ -397,6 +452,7 @@ namespace mLab {
     void text::write_to_file(std::ofstream *_ofstr, _mContainer*cont, int ignore_type) {
         std::string out_str = "";
         if(cont->ignore != -1) ignore_type = cont->ignore;
+        sort(cont);
         if(cont->start()) {
             for (text *i = (text*)cont->start(); ; i = (text*)i->get_next()) {
                 if(ignore_type != 0) {
@@ -592,8 +648,11 @@ namespace mLab {
         }
         res += "\nWith:\n";
         res += temp;
-        res += "\nCipher text:\n";
         std::string ciph;
+        res += "\nOpenText length:\n";
+        res += int_to_str(counter_function());
+        res += "\n";
+        res += "\nCipher text:\n";
         if(!cipher_txt)
             cipher();
         for(int i = 0; i < open_txt->length(); i++) {
@@ -613,5 +672,17 @@ namespace mLab {
     std::string *txt_digit_repl::get_open_txt() {
         return open_txt;
     }
-}
 
+    int txt_digit_repl::counter_function() {
+        return open_txt->length();
+    }
+
+    void _mContainer::set_start(node *n) {
+        _start = n;
+    }
+
+    void _mContainer::set_end(node *n) {
+        _end = n;
+    }
+
+}

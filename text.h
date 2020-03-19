@@ -36,6 +36,8 @@ namespace mLab {
         node *text_at(int pos);
         bool remove(node *_node);
         void append(node *_node);
+        void set_end(node* n);
+        void set_start(node* n);
         node *end();
         node *start();
         int ignore = -1;
@@ -50,6 +52,7 @@ namespace mLab {
         static int read_from_file(std::ifstream *_ifstr, _mContainer*cont);
         static void write_to_file(std::ofstream *_ifstr, _mContainer*cont, int ignore_type = 0);
         virtual void cipher()=0;
+        virtual int counter_function()=0;
         virtual int read(std::ifstream*)=0;
         virtual std::string info_string()=0;
         txt_type get_type() {return type;}
@@ -65,6 +68,7 @@ namespace mLab {
     // Класс текста с заменами
     class txt_replacement : public text{
     public:
+        int counter_function() override;
         void cipher() override;
         int read(std::ifstream*) override;
         std::string info_string() override;
@@ -84,6 +88,7 @@ namespace mLab {
     // Класс текста со сдвигом
     class txt_cycle : public text{
     public:
+        int counter_function() override;
         void cipher() override;
         int read(std::ifstream*) override;
         std::string info_string() override;
@@ -101,6 +106,7 @@ namespace mLab {
     class txt_digit_repl : public text{
     public:
         void cipher() override;
+        int counter_function() override;
         int read(std::ifstream*) override;
         std::string info_string() override;
         txt_digit_repl();

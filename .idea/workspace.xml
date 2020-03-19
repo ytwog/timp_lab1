@@ -18,6 +18,7 @@
     <list default="true" id="2c23f13a-2616-44d7-818a-19e09a688ac4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.14.5/CMakeCCompiler.cmake" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.14.5/CMakeCXXCompiler.cmake" beforeDir="false" />
@@ -39,6 +40,8 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CompilerIdCXX/CMakeCXXCompilerId.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.15.3/CompilerIdCXX/CMakeCXXCompilerId.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
 >>>>>>> feature/owner_info
+=======
+>>>>>>> feature/sort
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Lab1.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Lab1.dir/main.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Lab1.dir/text.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Lab1.dir/text.cpp.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Lab1.dir/vc140.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Lab1.dir/vc140.pdb" afterDir="false" />
@@ -56,11 +59,15 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Lab1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Lab1.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Lab1.ilk" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Lab1.ilk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Lab1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Lab1.pdb" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/input.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/output.txt" afterDir="false" />
 =======
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/input.txt" afterDir="false" />
 >>>>>>> feature/skipping_one_container
+=======
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/output.txt" afterDir="false" />
+>>>>>>> feature/sort
       <change beforePath="$PROJECT_DIR$/text.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/text.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/text.h" beforeDir="false" afterPath="$PROJECT_DIR$/text.h" afterDir="false" />
 >>>>>>> feature/owner_info
@@ -99,7 +106,10 @@
     <property name="settings.editor.selected.configurable" value="CPPToolchains" />
 =======
     <property name="settings.editor.selected.configurable" value="File.Encoding" />
+<<<<<<< HEAD
 >>>>>>> feature/skipping_one_container
+=======
+>>>>>>> feature/sort
   </component>
   <component name="RunManager">
     <configuration name="Lab1" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="input.txt" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Lab1" TARGET_NAME="Lab1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Lab1" RUN_TARGET_NAME="Lab1">
@@ -160,6 +170,7 @@
   </component>
   <component name="WindowStateProjectService">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <state x="201" y="69" key="SettingsEditor" timestamp="1584271650768">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -170,6 +181,40 @@
     </state>
     <state x="277" y="54" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1584277428879" />
 >>>>>>> feature/owner_info
+=======
+    <state width="1493" height="163" key="GridCell.Tab.0.bottom" timestamp="1584340527717">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="163" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584340527717" />
+    <state width="1493" height="163" key="GridCell.Tab.0.center" timestamp="1584340527717">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="163" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584340527717" />
+    <state width="1493" height="163" key="GridCell.Tab.0.left" timestamp="1584340527717">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="163" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584340527717" />
+    <state width="1493" height="163" key="GridCell.Tab.0.right" timestamp="1584340527717">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="163" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584340527717" />
+    <state width="1493" height="163" key="GridCell.Tab.1.bottom" timestamp="1584340501252">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="163" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584340501252" />
+    <state width="1493" height="163" key="GridCell.Tab.1.center" timestamp="1584340501252">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="163" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1584340501252" />
+    <state width="1493" height="163" key="GridCell.Tab.1.left" timestamp="1584340501252">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="163" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1584340501252" />
+    <state width="1493" height="163" key="GridCell.Tab.1.right" timestamp="1584340501252">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="163" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1584340501252" />
+>>>>>>> feature/sort
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

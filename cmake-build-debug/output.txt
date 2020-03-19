@@ -5,6 +5,20 @@ Replace:
 A,B,D,E,G,T,e,t,n,1,g
 With:
 13,2,43,101,32,44,35,66,1,0,11
+OpenText length:
+16
+
 Cipher text:
 44 101 120 66 32 70 111 114 32 44 35 115 66 0 1 32 
+----------------
+Cipher type: symbol cycle
+Open_text:
+TExt For Test1nG
+Shift: 3
+Cipher text:
+WHaw Iru Whvw1qJ
+Owner info:
+some owner
+OpenText length:
+16
 ----------------
