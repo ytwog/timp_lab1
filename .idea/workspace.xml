@@ -17,6 +17,7 @@
 =======
     <list default="true" id="2c23f13a-2616-44d7-818a-19e09a688ac4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.14.5/CMakeCCompiler.cmake" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.14.5/CMakeCXXCompiler.cmake" beforeDir="false" />
@@ -57,6 +58,9 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Lab1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Lab1.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/input.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/output.txt" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/input.txt" afterDir="false" />
+>>>>>>> feature/skipping_one_container
       <change beforePath="$PROJECT_DIR$/text.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/text.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/text.h" beforeDir="false" afterPath="$PROJECT_DIR$/text.h" afterDir="false" />
 >>>>>>> feature/owner_info
@@ -91,7 +95,11 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Lab1_func" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
+<<<<<<< HEAD
     <property name="settings.editor.selected.configurable" value="CPPToolchains" />
+=======
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+>>>>>>> feature/skipping_one_container
   </component>
   <component name="RunManager">
     <configuration name="Lab1" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="input.txt" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Lab1" TARGET_NAME="Lab1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Lab1" RUN_TARGET_NAME="Lab1">

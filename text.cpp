@@ -109,6 +109,16 @@ namespace mLab {
             _ifstr->getline(s, 255);
             str = s;
             if (s[0] == '/' && s[1] == '/') continue;
+            if (str.substr(0, 8) == "!IGNORE ") {
+                if (str[8] == '1') cont->ignore = txt_type::REPLACEMENT;
+                else if (str[8] == '2') cont->ignore = txt_type::CYCLE;
+                else if (str[8] == '3') cont->ignore = txt_type::DIGIT_REPL;
+                else {
+                    error_code = 6;
+                    break;
+                }
+                continue;
+            }
             if (str == "!ADD") {
                 operation = 0;
                 continue;
@@ -384,10 +394,17 @@ namespace mLab {
         _end = _start = NULL;
     }
 
-    void text::write_to_file(std::ofstream *_ofstr, _mContainer *cont) {
+    void text::write_to_file(std::ofstream *_ofstr, _mContainer*cont, int ignore_type) {
         std::string out_str = "";
-        if (cont->start()) {
-            for (text *i = (text *) cont->start();; i = (text *) i->get_next()) {
+        if(cont->ignore != -1) ignore_type = cont->ignore;
+        if(cont->start()) {
+            for (text *i = (text*)cont->start(); ; i = (text*)i->get_next()) {
+                if(ignore_type != 0) {
+                    if((txt_type)ignore_type == i->type) {
+                        if (i == cont->end()) break;
+                        continue;
+                    }
+                }
                 out_str += i->info_string();
                 out_str += "----------------\n";
                 if (i == cont->end()) break;

@@ -13,6 +13,7 @@
 // 2)   >shift - определяет сдвиг шифра
 //          Шифр2: целое число
 // >owner info - информация о владельце текста (с новой строки)
+!IGNORE 2
 !ADD
 >type 3
 >text
@@ -21,5 +22,12 @@ TExt For Test1nG
 A,B,D,E,G,T,e,t,n,1,g
 >with
 13,2,43,101,32,44,35,66,1,0,11
+>owner info
+some owner
+!ADD
+>type 2
+>text
+TExt For Test1nG
+>shift 3
 >owner info
 some owner
