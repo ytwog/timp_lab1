@@ -88,30 +88,33 @@ namespace mLab {
     void sort(_mContainer *cont) {
         int _size = 0;
         if((text*)cont->start() == nullptr) return;
-        text *prev_i = nullptr;
+        text *prev_i = (text*)cont->end();
         for(text* i = (text*)cont->start(); i != (text*)cont->end(); i = (text*)i->get_next()) {
-            text *prev_j = nullptr;
+            text *prev_j = i;
             for(text* j = (text*)i->get_next(); j != (text*)cont->start(); j = (text*)j->get_next()) {
                 if(comparat(i, j)) {
                     // Обновляем start
-                    if(cont->start() == i) {
-                        cont->set_start(j);
-                    } else if(cont->start() == j) {
-                        cont->set_start(i);
-                    }
+                    if(cont->start() == i) cont->set_start(j);
+                    else if(cont->start() == j) cont->set_start(i);
                     // Обновляем end
-                    if(cont->end() == i) {
-                        cont->set_end(j);
-                    } else if(cont->end() == j) {
-                        cont->set_end(i);
+                    if(cont->end() == i) cont->set_end(j);
+                    else if(cont->end() == j) cont->set_end(i);
+                    // Обновляем связи с последующими
+                    if(i != j->get_next() && j != i->get_next()) {
+                        node *z1 = i->get_next();
+                        i->set_next(j->get_next());
+                        j->set_next(z1);
+                    } else if(i == j->get_next() && j != i->get_next()) {
+                        j->set_next(i->get_next());
+                        i->set_next(j);
+                    } else if(i != j->get_next() && j == i->get_next()) {
+                        i->set_next(j->get_next());
+                        j->set_next(i);
                     }
-                    if(prev_i)
-                        prev_i->set_next(j);
-                    if(prev_j)
-                        prev_j->set_next(i);
-                    node*z1 = i->get_next();
-                    i->set_next(j->get_next());
-                    j->set_next(z1);
+                    // Обновляем связи с предыдущими
+                    if(prev_i && j != prev_i) prev_i->set_next(j);
+                    if(prev_j && i != prev_j) prev_j->set_next(i);
+                    // Меняем элементы
                     auto z2 = i;
                     i = j;
                     j = z2;
