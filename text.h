@@ -77,6 +77,7 @@ namespace mLab {
         std::pair<char, char> *mapping;
         std::string *cipher_txt;
         std::string *open_txt;
+        std::string *owner_info;
     };
 
     // Класс текста со сдвигом
@@ -93,6 +94,7 @@ namespace mLab {
         int shift;
         std::string *cipher_txt;
         std::string *open_txt;
+        std::string *owner_info;
     };
 
     class txt_digit_repl : public text{
@@ -108,6 +110,7 @@ namespace mLab {
         std::pair<char, int> *mapping;
         int *cipher_txt;
         std::string *open_txt;
+        std::string *owner_info;
     };
 }
 #endif //LAB1_TEXT_H
