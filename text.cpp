@@ -57,7 +57,7 @@ namespace mLab {
                 out_str += "5 - waited \">type\", got other str";
                 break;
             case 6:
-                out_str += "6 - type should by either 1 or 2";
+                out_str += "6 - type should by either 1, 2 or 3";
                 break;
             case 7:
                 out_str += "7 - input/output file can't be opened";
@@ -81,24 +81,23 @@ namespace mLab {
                 out_str += "unexpected error.\n";
         }
         std::cout << out_str << std::endl;
-        system("pause");
         return error_code;
     }
 
-    void sort(_mContainer *cont) {
+    void _mContainer::sort() {
         int _size = 0;
-        if((text*)cont->start() == nullptr) return;
-        text *prev_i = (text*)cont->end();
-        for(text* i = (text*)cont->start(); i != (text*)cont->end(); i = (text*)i->get_next()) {
+        if((text*)start() == nullptr) return;
+        text *prev_i = (text*)end();
+        for(text* i = (text*)start(); i != (text*)end(); i = (text*)i->get_next()) {
             text *prev_j = i;
-            for(text* j = (text*)i->get_next(); j != (text*)cont->start(); j = (text*)j->get_next()) {
+            for(text* j = (text*)i->get_next(); j != (text*)start(); j = (text*)j->get_next()) {
                 if(comparat(i, j)) {
                     // Обновляем start
-                    if(cont->start() == i) cont->set_start(j);
-                    else if(cont->start() == j) cont->set_start(i);
+                    if(start() == i) set_start(j);
+                    else if(start() == j) set_start(i);
                     // Обновляем end
-                    if(cont->end() == i) cont->set_end(j);
-                    else if(cont->end() == j) cont->set_end(i);
+                    if(end() == i) set_end(j);
+                    else if(end() == j) set_end(i);
                     // Обновляем связи с последующими
                     if(i != j->get_next() && j != i->get_next()) {
                         node *z1 = i->get_next();
@@ -197,6 +196,9 @@ namespace mLab {
             }
         }
         delete[] s;
+        if(!error_code) {
+            std::cout << "Successfully read file" << std::endl;
+        }
         return error_code;
     }
 
@@ -454,8 +456,8 @@ namespace mLab {
 
     void text::write_to_file(std::ofstream *_ofstr, _mContainer*cont, int ignore_type) {
         std::string out_str = "";
-        if(cont->ignore != -1) ignore_type = cont->ignore;
-        sort(cont);
+        if(ignore_type != -1) ignore_type = cont->ignore;
+        else ignore_type = 0;
         if(cont->start()) {
             for (text *i = (text*)cont->start(); ; i = (text*)i->get_next()) {
                 if(ignore_type != 0) {

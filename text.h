@@ -40,6 +40,7 @@ namespace mLab {
         void set_start(node* n);
         node *end();
         node *start();
+        void sort();
         int ignore = -1;
     private:
         node *_start;
@@ -50,7 +51,7 @@ namespace mLab {
     class text : public node{
     public:
         static int read_from_file(std::ifstream *_ifstr, _mContainer*cont);
-        static void write_to_file(std::ofstream *_ifstr, _mContainer*cont, int ignore_type = 0);
+        static void write_to_file(std::ofstream *_ifstr, _mContainer*cont, int ignore_type = -1);
         virtual void cipher()=0;
         virtual int counter_function()=0;
         virtual int read(std::ifstream*)=0;
