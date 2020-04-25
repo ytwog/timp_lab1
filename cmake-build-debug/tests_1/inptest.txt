@@ -1,0 +1,57 @@
+// !ADD - заставляет программу прочитать следующие 7 строк и добавить элемент в контейнер
+// > - разделитель полей
+// >type {1/2/3} - определение типа шифрования
+// >text - определение Открытого текста (вводится с новой строки)
+// >replace - определение символов, которые нужно заменить
+//          Шифр1: сплошным текстом
+//          Шифр3: через запятую
+// >with    - определение символов, которыми нужно 
+//          заменить изначальные (с новой строки;
+//	    i-ый элемент строки replace заменяется i-ым элементом строки with)
+//          Шифр1: сплошным текстом
+//          Шифр3: через запятую
+// 2)   >shift - определяет сдвиг шифра
+//          Шифр2: целое число
+// >owner info - информация о владельце текста (с новой строки)
+!IGNORE 2
+!ADD
+>type 3
+>text
+TExt DSADDASDDDDDDDDDDDD
+>replace
+A,B,D,E,G,T,e,t,n,1,g
+>with
+13,2,43,101,32,44,35,66,1,0,11
+>owner info
+some owner
+!ADD
+>type 2
+>text
+TExt For Test1nG
+>shift 3
+>owner info
+some owner
+!ADD
+>type 2
+>text
+TExt For
+>shift 3
+>owner info
+some owner
+!ADD
+>type 2
+>text
+TExt For Test1nG
+>shift 3
+>owner info
+some owner
+!ADD
+>type 3
+>text
+TExt DSADDASDDDDDDDDDDDD
+>replace
+A,B,D,E,G,T,e,t,n,1,g
+>with
+13,2,43,101,32,44,35,66,1,0,11
+>owner info
+some owner
