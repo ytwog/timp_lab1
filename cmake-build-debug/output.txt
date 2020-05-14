@@ -56,3 +56,394 @@ Shift: 26
 Cipher text:
 OPEN YOUR EYES
 ----------------
+Multimethod.
+Cycle and replacement
+-First text-----
+Cipher type: symbol replacement
+Open_text:
+BLABALBBLBA
+Replace:
+ABCDEFGHIJKLMNOPQRSTUXWYZ
+With:
+DGFJASKFNJCOWPJIWBUWBCJCB
+Cipher text:
+GODGDOGGOGD
+-Second text----
+Cipher type: symbol cycle
+Open_text:
+TEXT SAFASF TEXT AWEPO D
+Shift: 18
+Cipher text:
+LWPL KSXSKX LWPL SOWHG V
+----------------
+Replacement and replacement
+-First text-----
+Cipher type: symbol replacement
+Open_text:
+BLABALBBLBA
+Replace:
+ABCDEFGHIJKLMNOPQRSTUXWYZ
+With:
+DGFJASKFNJCOWPJIWBUWBCJCB
+Cipher text:
+GODGDOGGOGD
+-Second text----
+Cipher type: symbol replacement
+Open_text:
+GADfAKFASFKALFFASK FA SKF L
+Replace:
+ABCDEFGHIJKLMNOPQRSTUXWYZ
+With:
+DGFJASKFNJCOWPJIWBUWBCJCB
+Cipher text:
+KDJfDCSDUSCDOSSDUC SD UCS O
+----------------
+Replacement and replacement
+-First text-----
+Cipher type: symbol replacement
+Open_text:
+BLABALBBLBA
+Replace:
+ABCDEFGHIJKLMNOPQRSTUXWYZ
+With:
+DGFJASKFNJCOWPJIWBUWBCJCB
+Cipher text:
+GODGDOGGOGD
+-Second text----
+Cipher type: symbol replacement
+Open_text:
+SOME RANDOM text 
+Replace:
+ABCDEFGHIJKLMNOPQRSTUtext
+With:
+DGFJASKFNJCOWPJIWBUWBqwez
+Cipher text:
+UJWA BDPJJW zwez 
+----------------
+Cycle and replacement
+-First text-----
+Cipher type: symbol replacement
+Open_text:
+BLABALBBLBA
+Replace:
+ABCDEFGHIJKLMNOPQRSTUXWYZ
+With:
+DGFJASKFNJCOWPJIWBUWBCJCB
+Cipher text:
+GODGDOGGOGD
+-Second text----
+Cipher type: symbol cycle
+Open_text:
+OPEN TEXT FOR ENTRY 1 WITH CYCLE SHIFT
+Shift: 2
+Cipher text:
+QRGP VGZV HQT GPVTA 1 YKVJ EAENG UJKHV
+----------------
+Cycle and replacement
+-First text-----
+Cipher type: symbol replacement
+Open_text:
+BLABALBBLBA
+Replace:
+ABCDEFGHIJKLMNOPQRSTUXWYZ
+With:
+DGFJASKFNJCOWPJIWBUWBCJCB
+Cipher text:
+GODGDOGGOGD
+-Second text----
+Cipher type: symbol cycle
+Open_text:
+OPEN text FOR ENTRY 2 ABLABBALAB
+Shift: 11
+Cipher text:
+ZAPY epie QZC PYECJ 2 LMWLMMLWLM
+----------------
+Cycle and replacement
+-First text-----
+Cipher type: symbol replacement
+Open_text:
+BLABALBBLBA
+Replace:
+ABCDEFGHIJKLMNOPQRSTUXWYZ
+With:
+DGFJASKFNJCOWPJIWBUWBCJCB
+Cipher text:
+GODGDOGGOGD
+-Second text----
+Cipher type: symbol cycle
+Open_text:
+OPEN YOUR EYES
+Shift: 26
+Cipher text:
+OPEN YOUR EYES
+----------------
+Replacement and cycle
+-First text-----
+Cipher type: symbol cycle
+Open_text:
+TEXT SAFASF TEXT AWEPO D
+Shift: 18
+Cipher text:
+LWPL KSXSKX LWPL SOWHG V
+-Second text----
+Cipher type: symbol replacement
+Open_text:
+GADfAKFASFKALFFASK FA SKF L
+Replace:
+ABCDEFGHIJKLMNOPQRSTUXWYZ
+With:
+DGFJASKFNJCOWPJIWBUWBCJCB
+Cipher text:
+KDJfDCSDUSCDOSSDUC SD UCS O
+----------------
+Replacement and cycle
+-First text-----
+Cipher type: symbol cycle
+Open_text:
+TEXT SAFASF TEXT AWEPO D
+Shift: 18
+Cipher text:
+LWPL KSXSKX LWPL SOWHG V
+-Second text----
+Cipher type: symbol replacement
+Open_text:
+SOME RANDOM text 
+Replace:
+ABCDEFGHIJKLMNOPQRSTUtext
+With:
+DGFJASKFNJCOWPJIWBUWBqwez
+Cipher text:
+UJWA BDPJJW zwez 
+----------------
+Cycle and cycle
+-First text-----
+Cipher type: symbol cycle
+Open_text:
+TEXT SAFASF TEXT AWEPO D
+Shift: 18
+Cipher text:
+LWPL KSXSKX LWPL SOWHG V
+-Second text----
+Cipher type: symbol cycle
+Open_text:
+OPEN TEXT FOR ENTRY 1 WITH CYCLE SHIFT
+Shift: 2
+Cipher text:
+QRGP VGZV HQT GPVTA 1 YKVJ EAENG UJKHV
+----------------
+Cycle and cycle
+-First text-----
+Cipher type: symbol cycle
+Open_text:
+TEXT SAFASF TEXT AWEPO D
+Shift: 18
+Cipher text:
+LWPL KSXSKX LWPL SOWHG V
+-Second text----
+Cipher type: symbol cycle
+Open_text:
+OPEN text FOR ENTRY 2 ABLABBALAB
+Shift: 11
+Cipher text:
+ZAPY epie QZC PYECJ 2 LMWLMMLWLM
+----------------
+Cycle and cycle
+-First text-----
+Cipher type: symbol cycle
+Open_text:
+TEXT SAFASF TEXT AWEPO D
+Shift: 18
+Cipher text:
+LWPL KSXSKX LWPL SOWHG V
+-Second text----
+Cipher type: symbol cycle
+Open_text:
+OPEN YOUR EYES
+Shift: 26
+Cipher text:
+OPEN YOUR EYES
+----------------
+Replacement and replacement
+-First text-----
+Cipher type: symbol replacement
+Open_text:
+GADfAKFASFKALFFASK FA SKF L
+Replace:
+ABCDEFGHIJKLMNOPQRSTUXWYZ
+With:
+DGFJASKFNJCOWPJIWBUWBCJCB
+Cipher text:
+KDJfDCSDUSCDOSSDUC SD UCS O
+-Second text----
+Cipher type: symbol replacement
+Open_text:
+SOME RANDOM text 
+Replace:
+ABCDEFGHIJKLMNOPQRSTUtext
+With:
+DGFJASKFNJCOWPJIWBUWBqwez
+Cipher text:
+UJWA BDPJJW zwez 
+----------------
+Cycle and replacement
+-First text-----
+Cipher type: symbol replacement
+Open_text:
+GADfAKFASFKALFFASK FA SKF L
+Replace:
+ABCDEFGHIJKLMNOPQRSTUXWYZ
+With:
+DGFJASKFNJCOWPJIWBUWBCJCB
+Cipher text:
+KDJfDCSDUSCDOSSDUC SD UCS O
+-Second text----
+Cipher type: symbol cycle
+Open_text:
+OPEN TEXT FOR ENTRY 1 WITH CYCLE SHIFT
+Shift: 2
+Cipher text:
+QRGP VGZV HQT GPVTA 1 YKVJ EAENG UJKHV
+----------------
+Cycle and replacement
+-First text-----
+Cipher type: symbol replacement
+Open_text:
+GADfAKFASFKALFFASK FA SKF L
+Replace:
+ABCDEFGHIJKLMNOPQRSTUXWYZ
+With:
+DGFJASKFNJCOWPJIWBUWBCJCB
+Cipher text:
+KDJfDCSDUSCDOSSDUC SD UCS O
+-Second text----
+Cipher type: symbol cycle
+Open_text:
+OPEN text FOR ENTRY 2 ABLABBALAB
+Shift: 11
+Cipher text:
+ZAPY epie QZC PYECJ 2 LMWLMMLWLM
+----------------
+Cycle and replacement
+-First text-----
+Cipher type: symbol replacement
+Open_text:
+GADfAKFASFKALFFASK FA SKF L
+Replace:
+ABCDEFGHIJKLMNOPQRSTUXWYZ
+With:
+DGFJASKFNJCOWPJIWBUWBCJCB
+Cipher text:
+KDJfDCSDUSCDOSSDUC SD UCS O
+-Second text----
+Cipher type: symbol cycle
+Open_text:
+OPEN YOUR EYES
+Shift: 26
+Cipher text:
+OPEN YOUR EYES
+----------------
+Cycle and replacement
+-First text-----
+Cipher type: symbol replacement
+Open_text:
+SOME RANDOM text 
+Replace:
+ABCDEFGHIJKLMNOPQRSTUtext
+With:
+DGFJASKFNJCOWPJIWBUWBqwez
+Cipher text:
+UJWA BDPJJW zwez 
+-Second text----
+Cipher type: symbol cycle
+Open_text:
+OPEN TEXT FOR ENTRY 1 WITH CYCLE SHIFT
+Shift: 2
+Cipher text:
+QRGP VGZV HQT GPVTA 1 YKVJ EAENG UJKHV
+----------------
+Cycle and replacement
+-First text-----
+Cipher type: symbol replacement
+Open_text:
+SOME RANDOM text 
+Replace:
+ABCDEFGHIJKLMNOPQRSTUtext
+With:
+DGFJASKFNJCOWPJIWBUWBqwez
+Cipher text:
+UJWA BDPJJW zwez 
+-Second text----
+Cipher type: symbol cycle
+Open_text:
+OPEN text FOR ENTRY 2 ABLABBALAB
+Shift: 11
+Cipher text:
+ZAPY epie QZC PYECJ 2 LMWLMMLWLM
+----------------
+Cycle and replacement
+-First text-----
+Cipher type: symbol replacement
+Open_text:
+SOME RANDOM text 
+Replace:
+ABCDEFGHIJKLMNOPQRSTUtext
+With:
+DGFJASKFNJCOWPJIWBUWBqwez
+Cipher text:
+UJWA BDPJJW zwez 
+-Second text----
+Cipher type: symbol cycle
+Open_text:
+OPEN YOUR EYES
+Shift: 26
+Cipher text:
+OPEN YOUR EYES
+----------------
+Cycle and cycle
+-First text-----
+Cipher type: symbol cycle
+Open_text:
+OPEN TEXT FOR ENTRY 1 WITH CYCLE SHIFT
+Shift: 2
+Cipher text:
+QRGP VGZV HQT GPVTA 1 YKVJ EAENG UJKHV
+-Second text----
+Cipher type: symbol cycle
+Open_text:
+OPEN text FOR ENTRY 2 ABLABBALAB
+Shift: 11
+Cipher text:
+ZAPY epie QZC PYECJ 2 LMWLMMLWLM
+----------------
+Cycle and cycle
+-First text-----
+Cipher type: symbol cycle
+Open_text:
+OPEN TEXT FOR ENTRY 1 WITH CYCLE SHIFT
+Shift: 2
+Cipher text:
+QRGP VGZV HQT GPVTA 1 YKVJ EAENG UJKHV
+-Second text----
+Cipher type: symbol cycle
+Open_text:
+OPEN YOUR EYES
+Shift: 26
+Cipher text:
+OPEN YOUR EYES
+----------------
+Cycle and cycle
+-First text-----
+Cipher type: symbol cycle
+Open_text:
+OPEN text FOR ENTRY 2 ABLABBALAB
+Shift: 11
+Cipher text:
+ZAPY epie QZC PYECJ 2 LMWLMMLWLM
+-Second text----
+Cipher type: symbol cycle
+Open_text:
+OPEN YOUR EYES
+Shift: 26
+Cipher text:
+OPEN YOUR EYES
+----------------

@@ -20,5 +20,7 @@ int main(int argc, char* argv[]) {
     _mContainer container;
     print_err(text::read_from_file(&ifstr, &container));
     text::write_to_file(&ofstr, &container);
+    container.multi_method(ofstr);
+    std::cout << "Program finished"<< std::endl;
     return 0;
 }

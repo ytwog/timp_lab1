@@ -35,6 +35,7 @@ namespace mLab {
         node *text_at(int pos);
         bool remove(node *_node);
         void append(node *_node);
+        void multi_method(std::ofstream &ofst);
         node *end();
         node *start();
     private:
@@ -50,9 +51,11 @@ namespace mLab {
         virtual void cipher()=0;
         virtual int read(std::ifstream*)=0;
         virtual std::string info_string()=0;
+        virtual void multi_replacement(std::ofstream &ofst) = 0;
+        virtual void multi_cycle(std::ofstream &ofst) = 0;
+        virtual void multi_method(text *other, std::ofstream &ofst) = 0;
         txt_type get_type() {return type;}
         void set_type(int _type);
-
     protected:
         txt_type type;
     };
@@ -70,7 +73,9 @@ namespace mLab {
         std::pair<char,char> *get_mapping();
         std::string *get_cipher_txt();
         std::string *get_open_txt();
-
+        void multi_replacement(std::ofstream &ofst) override;
+        void multi_cycle(std::ofstream &ofst) override;
+        void multi_method(text *other, std::ofstream &ofst) override;
     private:
         int alphabet_length;
         std::pair<char, char> *mapping;
@@ -87,7 +92,9 @@ namespace mLab {
         txt_cycle();
         std::string *get_cipher_txt();
         std::string *get_open_txt();
-
+        void multi_replacement(std::ofstream &ofst) override;
+        void multi_cycle(std::ofstream &ofst) override;
+        void multi_method(text *other, std::ofstream &ofst) override;
     private:
         int shift;
         std::string *cipher_txt;

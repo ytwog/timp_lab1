@@ -402,4 +402,42 @@ namespace mLab {
 
     node *_mContainer::start() {return _start;}
 
+    void _mContainer::multi_method(std::ofstream &ofst) {
+        ofst << "Multimethod." << std::endl;
+        for(text* i = (text*)start(); i != (text*)end(); i = (text*)i->get_next()) {
+            for(text* j = (text*)i->get_next(); j != (text*)start(); j = (text*)j->get_next()) {
+                i->multi_method(j, ofst);
+                ofst << "-First text-----" << std::endl;
+                ofst << i->info_string();
+                ofst << "-Second text----" << std::endl;
+                ofst << j->info_string();
+                ofst << "----------------" << std::endl;
+            }
+        }
+    }
+
+    void txt_replacement::multi_method(text *other, std::ofstream &ofst) {
+        other->multi_replacement(ofst);
+    }
+
+    void txt_replacement::multi_replacement(std::ofstream &ofst) {
+        ofst << "Replacement and replacement" << std::endl;
+    }
+
+    void txt_replacement::multi_cycle(std::ofstream &ofst) {
+        ofst << "Replacement and cycle" << std::endl;
+    }
+
+    void txt_cycle::multi_method(text *other, std::ofstream &ofst) {
+        other->multi_cycle(ofst);
+    }
+
+    void txt_cycle::multi_replacement(std::ofstream &ofst) {
+        ofst << "Cycle and replacement" << std::endl;
+    }
+
+    void txt_cycle::multi_cycle(std::ofstream &ofst) {
+        ofst << "Cycle and cycle" << std::endl;
+    }
+
 }
