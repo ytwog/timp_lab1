@@ -96,21 +96,64 @@ CMakeFiles\Lab1.dir\text.cpp.s: cmake_force
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\Lab1.dir\text.cpp.s /c "C:\Abc\docsx\3 course\tech_program\Lab1\text.cpp"
 <<
 
+CMakeFiles\Lab1.dir\tests_1\Unit_test.cpp.obj: CMakeFiles\Lab1.dir\flags.make
+CMakeFiles\Lab1.dir\tests_1\Unit_test.cpp.obj: ..\tests_1\Unit_test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Abc\docsx\3 course\tech_program\Lab1\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Lab1.dir/tests_1/Unit_test.cpp.obj"
+	"C:\PROGRA~2\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\Hostx64\x64\cl.exe" @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\Lab1.dir\tests_1\Unit_test.cpp.obj /FdCMakeFiles\Lab1.dir\ /FS -c "C:\Abc\docsx\3 course\tech_program\Lab1\tests_1\Unit_test.cpp"
+<<
+
+CMakeFiles\Lab1.dir\tests_1\Unit_test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Lab1.dir/tests_1/Unit_test.cpp.i"
+	"C:\PROGRA~2\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\Hostx64\x64\cl.exe" > CMakeFiles\Lab1.dir\tests_1\Unit_test.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Abc\docsx\3 course\tech_program\Lab1\tests_1\Unit_test.cpp"
+<<
+
+CMakeFiles\Lab1.dir\tests_1\Unit_test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Lab1.dir/tests_1/Unit_test.cpp.s"
+	"C:\PROGRA~2\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\Hostx64\x64\cl.exe" @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\Lab1.dir\tests_1\Unit_test.cpp.s /c "C:\Abc\docsx\3 course\tech_program\Lab1\tests_1\Unit_test.cpp"
+<<
+
+CMakeFiles\Lab1.dir\tests_1\Unit_test2.cpp.obj: CMakeFiles\Lab1.dir\flags.make
+CMakeFiles\Lab1.dir\tests_1\Unit_test2.cpp.obj: ..\tests_1\Unit_test2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Abc\docsx\3 course\tech_program\Lab1\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Lab1.dir/tests_1/Unit_test2.cpp.obj"
+	"C:\PROGRA~2\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\Hostx64\x64\cl.exe" @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\Lab1.dir\tests_1\Unit_test2.cpp.obj /FdCMakeFiles\Lab1.dir\ /FS -c "C:\Abc\docsx\3 course\tech_program\Lab1\tests_1\Unit_test2.cpp"
+<<
+
+CMakeFiles\Lab1.dir\tests_1\Unit_test2.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Lab1.dir/tests_1/Unit_test2.cpp.i"
+	"C:\PROGRA~2\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\Hostx64\x64\cl.exe" > CMakeFiles\Lab1.dir\tests_1\Unit_test2.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Abc\docsx\3 course\tech_program\Lab1\tests_1\Unit_test2.cpp"
+<<
+
+CMakeFiles\Lab1.dir\tests_1\Unit_test2.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Lab1.dir/tests_1/Unit_test2.cpp.s"
+	"C:\PROGRA~2\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\Hostx64\x64\cl.exe" @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\Lab1.dir\tests_1\Unit_test2.cpp.s /c "C:\Abc\docsx\3 course\tech_program\Lab1\tests_1\Unit_test2.cpp"
+<<
+
 # Object files for target Lab1
 Lab1_OBJECTS = \
 "CMakeFiles\Lab1.dir\main.cpp.obj" \
-"CMakeFiles\Lab1.dir\text.cpp.obj"
+"CMakeFiles\Lab1.dir\text.cpp.obj" \
+"CMakeFiles\Lab1.dir\tests_1\Unit_test.cpp.obj" \
+"CMakeFiles\Lab1.dir\tests_1\Unit_test2.cpp.obj"
 
 # External object files for target Lab1
 Lab1_EXTERNAL_OBJECTS =
 
 Lab1.exe: CMakeFiles\Lab1.dir\main.cpp.obj
 Lab1.exe: CMakeFiles\Lab1.dir\text.cpp.obj
+Lab1.exe: CMakeFiles\Lab1.dir\tests_1\Unit_test.cpp.obj
+Lab1.exe: CMakeFiles\Lab1.dir\tests_1\Unit_test2.cpp.obj
 Lab1.exe: CMakeFiles\Lab1.dir\build.make
+Lab1.exe: lib\gtestd.lib
 Lab1.exe: CMakeFiles\Lab1.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Abc\docsx\3 course\tech_program\Lab1\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Lab1.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Abc\docsx\3 course\tech_program\Lab1\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable Lab1.exe"
 	"C:\Program Files\JetBrains\CLion 2019.2.1\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\Lab1.dir --rc="C:\PROGRA~2\Windows Kits\10\bin\10.0.17763.0\x64\rc.exe" --mt="C:\PROGRA~2\Windows Kits\10\bin\10.0.17763.0\x64\mt.exe" --manifests  -- "C:\PROGRA~2\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\Hostx64\x64\link.exe" /nologo @CMakeFiles\Lab1.dir\objects1.rsp @<<
- /out:Lab1.exe /implib:Lab1.lib /pdb:"C:\Abc\docsx\3 course\tech_program\Lab1\cmake-build-debug\Lab1.pdb" /version:0.0  /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
+ /out:Lab1.exe /implib:Lab1.lib /pdb:"C:\Abc\docsx\3 course\tech_program\Lab1\cmake-build-debug\Lab1.pdb" /version:0.0  /machine:x64 /debug /INCREMENTAL /subsystem:console lib\gtestd.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
 <<
 
 # Rule to build all files generated by this target.

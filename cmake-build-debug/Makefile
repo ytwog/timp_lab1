@@ -57,6 +57,52 @@ CMAKE_BINARY_DIR = "C:\Abc\docsx\3 course\tech_program\Lab1\cmake-build-debug"
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	echo >nul && "C:\Program Files\JetBrains\CLion 2019.2.1\bin\cmake\win\bin\cmake.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache\fast: rebuild_cache
+
+.PHONY : rebuild_cache\fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	echo >nul && "C:\Program Files\JetBrains\CLion 2019.2.1\bin\cmake\win\bin\ctest.exe" --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test\fast: test
+
+.PHONY : test\fast
+
+# Special rule for the target install/local
+install\local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	echo >nul && "C:\Program Files\JetBrains\CLion 2019.2.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install\local
+
+# Special rule for the target install/local
+install\local\fast: preinstall\fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	echo >nul && "C:\Program Files\JetBrains\CLion 2019.2.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install\local\fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	echo >nul && "C:\Program Files\JetBrains\CLion 2019.2.1\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install\fast: preinstall\fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	echo >nul && "C:\Program Files\JetBrains\CLion 2019.2.1\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake
+.PHONY : install\fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -68,16 +114,15 @@ edit_cache\fast: edit_cache
 
 .PHONY : edit_cache\fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	echo >nul && "C:\Program Files\JetBrains\CLion 2019.2.1\bin\cmake\win\bin\cmake.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
 
-# Special rule for the target rebuild_cache
-rebuild_cache\fast: rebuild_cache
+# Special rule for the target list_install_components
+list_install_components\fast: list_install_components
 
-.PHONY : rebuild_cache\fast
+.PHONY : list_install_components\fast
 
 # The main all target
 all: cmake_check_build_system
@@ -124,6 +169,58 @@ Lab1\fast:
 	$(MAKE) -f CMakeFiles\Lab1.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Lab1.dir\build
 .PHONY : Lab1\fast
 
+#=============================================================================
+# Target rules for targets named gmock_main
+
+# Build rule for target.
+gmock_main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) gmock_main
+.PHONY : gmock_main
+
+# fast build rule for target.
+gmock_main\fast:
+	$(MAKE) -f lib\googletest-master\googlemock\CMakeFiles\gmock_main.dir\build.make /nologo -$(MAKEFLAGS) lib\googletest-master\googlemock\CMakeFiles\gmock_main.dir\build
+.PHONY : gmock_main\fast
+
+#=============================================================================
+# Target rules for targets named gmock
+
+# Build rule for target.
+gmock: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) gmock
+.PHONY : gmock
+
+# fast build rule for target.
+gmock\fast:
+	$(MAKE) -f lib\googletest-master\googlemock\CMakeFiles\gmock.dir\build.make /nologo -$(MAKEFLAGS) lib\googletest-master\googlemock\CMakeFiles\gmock.dir\build
+.PHONY : gmock\fast
+
+#=============================================================================
+# Target rules for targets named gtest
+
+# Build rule for target.
+gtest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) gtest
+.PHONY : gtest
+
+# fast build rule for target.
+gtest\fast:
+	$(MAKE) -f lib\googletest-master\googletest\CMakeFiles\gtest.dir\build.make /nologo -$(MAKEFLAGS) lib\googletest-master\googletest\CMakeFiles\gtest.dir\build
+.PHONY : gtest\fast
+
+#=============================================================================
+# Target rules for targets named gtest_main
+
+# Build rule for target.
+gtest_main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) gtest_main
+.PHONY : gtest_main
+
+# fast build rule for target.
+gtest_main\fast:
+	$(MAKE) -f lib\googletest-master\googletest\CMakeFiles\gtest_main.dir\build.make /nologo -$(MAKEFLAGS) lib\googletest-master\googletest\CMakeFiles\gtest_main.dir\build
+.PHONY : gtest_main\fast
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -150,6 +247,60 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) -f CMakeFiles\Lab1.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Lab1.dir\main.cpp.s
 .PHONY : main.cpp.s
+
+tests_1\Unit_test.obj: tests_1\Unit_test.cpp.obj
+
+.PHONY : tests_1\Unit_test.obj
+
+# target to build an object file
+tests_1\Unit_test.cpp.obj:
+	$(MAKE) -f CMakeFiles\Lab1.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Lab1.dir\tests_1\Unit_test.cpp.obj
+.PHONY : tests_1\Unit_test.cpp.obj
+
+tests_1\Unit_test.i: tests_1\Unit_test.cpp.i
+
+.PHONY : tests_1\Unit_test.i
+
+# target to preprocess a source file
+tests_1\Unit_test.cpp.i:
+	$(MAKE) -f CMakeFiles\Lab1.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Lab1.dir\tests_1\Unit_test.cpp.i
+.PHONY : tests_1\Unit_test.cpp.i
+
+tests_1\Unit_test.s: tests_1\Unit_test.cpp.s
+
+.PHONY : tests_1\Unit_test.s
+
+# target to generate assembly for a file
+tests_1\Unit_test.cpp.s:
+	$(MAKE) -f CMakeFiles\Lab1.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Lab1.dir\tests_1\Unit_test.cpp.s
+.PHONY : tests_1\Unit_test.cpp.s
+
+tests_1\Unit_test2.obj: tests_1\Unit_test2.cpp.obj
+
+.PHONY : tests_1\Unit_test2.obj
+
+# target to build an object file
+tests_1\Unit_test2.cpp.obj:
+	$(MAKE) -f CMakeFiles\Lab1.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Lab1.dir\tests_1\Unit_test2.cpp.obj
+.PHONY : tests_1\Unit_test2.cpp.obj
+
+tests_1\Unit_test2.i: tests_1\Unit_test2.cpp.i
+
+.PHONY : tests_1\Unit_test2.i
+
+# target to preprocess a source file
+tests_1\Unit_test2.cpp.i:
+	$(MAKE) -f CMakeFiles\Lab1.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Lab1.dir\tests_1\Unit_test2.cpp.i
+.PHONY : tests_1\Unit_test2.cpp.i
+
+tests_1\Unit_test2.s: tests_1\Unit_test2.cpp.s
+
+.PHONY : tests_1\Unit_test2.s
+
+# target to generate assembly for a file
+tests_1\Unit_test2.cpp.s:
+	$(MAKE) -f CMakeFiles\Lab1.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Lab1.dir\tests_1\Unit_test2.cpp.s
+.PHONY : tests_1\Unit_test2.cpp.s
 
 text.obj: text.cpp.obj
 
@@ -185,11 +336,25 @@ help:
 	@echo ... clean
 	@echo ... depend
 	@echo ... Lab1
-	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... test
+	@echo ... install/local
+	@echo ... install
+	@echo ... edit_cache
+	@echo ... list_install_components
+	@echo ... gmock_main
+	@echo ... gmock
+	@echo ... gtest
+	@echo ... gtest_main
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... tests_1/Unit_test.obj
+	@echo ... tests_1/Unit_test.i
+	@echo ... tests_1/Unit_test.s
+	@echo ... tests_1/Unit_test2.obj
+	@echo ... tests_1/Unit_test2.i
+	@echo ... tests_1/Unit_test2.s
 	@echo ... text.obj
 	@echo ... text.i
 	@echo ... text.s

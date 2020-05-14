@@ -1,0 +1,13 @@
+# Target labels
+ gtest
+# Source files and their labels
+C:/Abc/docsx/3 course/tech_program/Lab1/cmake-build-debug/CMakeFiles/gtest
+C:/Abc/docsx/3 course/tech_program/Lab1/cmake-build-debug/CMakeFiles/gtest.rule
+C:/Abc/docsx/3 course/tech_program/Lab1/cmake-build-debug/CMakeFiles/gtest-complete.rule
+C:/Abc/docsx/3 course/tech_program/Lab1/cmake-build-debug/gtest/src/gtest-stamp/gtest-install.rule
+C:/Abc/docsx/3 course/tech_program/Lab1/cmake-build-debug/gtest/src/gtest-stamp/gtest-mkdir.rule
+C:/Abc/docsx/3 course/tech_program/Lab1/cmake-build-debug/gtest/src/gtest-stamp/gtest-download.rule
+C:/Abc/docsx/3 course/tech_program/Lab1/cmake-build-debug/gtest/src/gtest-stamp/gtest-update.rule
+C:/Abc/docsx/3 course/tech_program/Lab1/cmake-build-debug/gtest/src/gtest-stamp/gtest-patch.rule
+C:/Abc/docsx/3 course/tech_program/Lab1/cmake-build-debug/gtest/src/gtest-stamp/gtest-configure.rule
+C:/Abc/docsx/3 course/tech_program/Lab1/cmake-build-debug/gtest/src/gtest-stamp/gtest-build.rule

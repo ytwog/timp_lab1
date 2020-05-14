@@ -335,6 +335,22 @@ namespace mLab {
         return open_txt->length();
     }
 
+    void txt_replacement::multi_method(text *other, std::ofstream &ofst) {
+        other->multi_replacement(ofst);
+    }
+
+    void txt_replacement::multi_replacement(std::ofstream &ofst) {
+        ofst << "Replacement and replacement" << std::endl;
+    }
+
+    void txt_replacement::multi_digit_repl(std::ofstream &ofst) {
+        ofst << "Replacement and digit_replacement" << std::endl;
+    }
+
+    void txt_replacement::multi_cycle(std::ofstream &ofst) {
+        ofst << "Replacement and cycle" << std::endl;
+    }
+
     /// Методы txt_cycle
 
     int txt_cycle::read(std::ifstream *_ifstr) {
@@ -438,6 +454,22 @@ namespace mLab {
         return open_txt->length();
     }
 
+    void txt_cycle::multi_method(text *other, std::ofstream &ofst) {
+        other->multi_cycle(ofst);
+    }
+
+    void txt_cycle::multi_replacement(std::ofstream &ofst) {
+        ofst << "Cycle and replacement" << std::endl;
+    }
+
+    void txt_cycle::multi_digit_repl(std::ofstream &ofst) {
+        ofst << "Cycle and digit_replacement" << std::endl;
+    }
+
+    void txt_cycle::multi_cycle(std::ofstream &ofst) {
+        ofst << "Cycle and cycle" << std::endl;
+    }
+
     /// Методы контейнера _mContainer
 
     /// Returns error_code:
@@ -475,6 +507,7 @@ namespace mLab {
         }
         _ofstr->write(out_str.c_str(), out_str.length());
     }
+
 
     node *_mContainer::text_at(int pos) {
         node *res = _start;
@@ -682,6 +715,22 @@ namespace mLab {
         return open_txt->length();
     }
 
+    void txt_digit_repl::multi_method(text *other, std::ofstream &ofst) {
+        other->multi_digit_repl(ofst);
+    }
+
+    void txt_digit_repl::multi_replacement(std::ofstream &ofst) {
+        ofst << "Digit_replacement and replacement" << std::endl;
+    }
+
+    void txt_digit_repl::multi_digit_repl(std::ofstream &ofst) {
+        ofst << "Digit_replacement and digit_replacement" << std::endl;
+    }
+
+    void txt_digit_repl::multi_cycle(std::ofstream &ofst) {
+        ofst << "Digit_replacement and cycle" << std::endl;
+    }
+
     void _mContainer::set_start(node *n) {
         _start = n;
     }
@@ -690,4 +739,17 @@ namespace mLab {
         _end = n;
     }
 
+    void _mContainer::multi_method(std::ofstream &ofst) {
+        ofst << "Multimethod." << std::endl;
+        for(text* i = (text*)start(); i != (text*)end(); i = (text*)i->get_next()) {
+            for(text* j = (text*)i->get_next(); j != (text*)start(); j = (text*)j->get_next()) {
+                i->multi_method(j, ofst);
+                ofst << "-First text-----" << std::endl;
+                ofst << i->info_string();
+                ofst << "-Second text----" << std::endl;
+                ofst << j->info_string();
+                ofst << "----------------" << std::endl;
+            }
+        }
+    }
 }

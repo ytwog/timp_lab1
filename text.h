@@ -12,6 +12,7 @@
 
 namespace mLab {
 
+    int from_str_to_int(std::string _s);
     // Перечисление типов текста
     enum txt_type {
         REPLACEMENT = 1,
@@ -33,6 +34,7 @@ namespace mLab {
     class _mContainer {
     public:
         _mContainer();
+        void multi_method(std::ofstream &ofst);
         node *text_at(int pos);
         bool remove(node *_node);
         void append(node *_node);
@@ -51,11 +53,15 @@ namespace mLab {
     class text : public node{
     public:
         static int read_from_file(std::ifstream *_ifstr, _mContainer*cont);
-        static void write_to_file(std::ofstream *_ifstr, _mContainer*cont, int ignore_type = -1);
+        static void write_to_file(std::ofstream *_ofstr, _mContainer*cont, int ignore_type = -1);
         virtual void cipher()=0;
         virtual int counter_function()=0;
         virtual int read(std::ifstream*)=0;
         virtual std::string info_string()=0;
+        virtual void multi_method(text *other, std::ofstream &ofst) = 0;
+        virtual void multi_replacement(std::ofstream &ofst) = 0;
+        virtual void multi_digit_repl(std::ofstream &ofst) = 0;
+        virtual void multi_cycle(std::ofstream &ofst) = 0;
         txt_type get_type() {return type;}
         void set_type(int _type);
 
@@ -77,7 +83,10 @@ namespace mLab {
         std::pair<char,char> *get_mapping();
         std::string *get_cipher_txt();
         std::string *get_open_txt();
-
+        void multi_method(text *other, std::ofstream &ofst) override;
+        void multi_replacement(std::ofstream &ofst) override;
+        void multi_digit_repl(std::ofstream &ofst) override;
+        void multi_cycle(std::ofstream &ofst) override;
     private:
         int alphabet_length;
         std::pair<char, char> *mapping;
@@ -96,6 +105,10 @@ namespace mLab {
         txt_cycle();
         std::string *get_cipher_txt();
         std::string *get_open_txt();
+        void multi_method(text *other, std::ofstream &ofst) override;
+        void multi_replacement(std::ofstream &ofst) override;
+        void multi_digit_repl(std::ofstream &ofst) override;
+        void multi_cycle(std::ofstream &ofst) override;
 
     private:
         int shift;
@@ -113,6 +126,11 @@ namespace mLab {
         txt_digit_repl();
         int *get_cipher_txt();
         std::string *get_open_txt();
+        void multi_method(text *other, std::ofstream &ofst) override;
+        void multi_replacement(std::ofstream &ofst) override;
+        void multi_digit_repl(std::ofstream &ofst) override;
+        void multi_cycle(std::ofstream &ofst) override;
+
     private:
         int alphabet_length;
         std::pair<char, int> *mapping;

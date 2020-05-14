@@ -1,0 +1,16 @@
+Determining if the include file pthread.h exists failed with the following output:
+Change Dir: C:/Abc/docsx/3 course/tech_program/Lab1/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake /nologo cmTC_94ad8\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX64\x64\nmake.exe" -f CMakeFiles\cmTC_94ad8.dir\build.make /nologo -L                  CMakeFiles\cmTC_94ad8.dir\build
+Building C object CMakeFiles/cmTC_94ad8.dir/CheckIncludeFile.c.obj
+	"C:\PROGRA~2\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\Hostx64\x64\cl.exe" @C:\Users\y2g\AppData\Local\Temp\nm134B.tmp
+CheckIncludeFile.c
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include\pthread.h(320): error C2011: timespec: переопределение типа "struct"
+C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt\time.h(39): note:  см. объявление "timespec"
+NMAKE : fatal error U1077: "C:\PROGRA~2\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\Hostx64\x64\cl.exe" : тючтЁр∙хээ√щ ъюф "0x2"
+Stop.
+NMAKE : fatal error U1077: "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX64\x64\nmake.exe" : тючтЁр∙хээ√щ ъюф "0x2"
+Stop.
+
+
+

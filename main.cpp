@@ -33,6 +33,7 @@ int main(int argc, char* argv[]) {
         int error_code = print_err(text::read_from_file(&ifstr, &container));
         container.sort();
         text::write_to_file(&ofstr, &container);
+        container.multi_method(ofstr);
         std::cout << "Program finished" << std::endl;
         return error_code;
     }
